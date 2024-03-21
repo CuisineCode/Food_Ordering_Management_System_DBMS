@@ -1,8 +1,13 @@
 import logo from './logo.svg';
 import React from 'react';
-import './App.css';
+import Navbar from './components/Navbar/Navbar';
+import Cart from './Pages/Cart';
+import Shop from './Pages/Shop';
+import ShopCategory from './Pages/ShopCategory';
+import './App.css'; 
 import Hero from './components/heroes/hero';
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
+
 
 function App() {
   return (
@@ -21,7 +26,7 @@ function App() {
        
 
       <Route path='/cart' element={<Cart/>}/>
-      <Route path='/login' element={<LoginSignup/>}/>
+      
        </Routes>
       
       </BrowserRouter> 
