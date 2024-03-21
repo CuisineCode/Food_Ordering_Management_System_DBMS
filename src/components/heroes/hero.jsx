@@ -3,6 +3,7 @@ import hand_icon from '../assets/hand_icon.png';
 import arrow_icon from '../assets/arrow.png';
 import hero_image from '../assets/hero_image.png';
 
+
 const Hero = () => {
     return (
         <div className="flex h-screen bg-gradient-to-b from-purple-100 to-green-200 bg-opacity-50">
