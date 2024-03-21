@@ -1,8 +1,7 @@
 
-{/* Exclusive Offers Banner */}
 import React from "react";
-import Image from "next/image";
-import exclusive_image from '../Assets/exclusive_image.png';
+
+import exclusive_image from '../assets/exclusive_image.png';
 
 const Offers = () => {
     return (
@@ -16,7 +15,7 @@ const Offers = () => {
                 </button>
             </div>
             <div className="flex-1 flex items-center justify-end pr-10">
-                <Image src={exclusive_image} alt="" width={400} height={400} />
+                <img src={exclusive_image} alt="" width={400} height={400} />
             </div>
         </div>
     );
