@@ -1,47 +1,44 @@
 
 
 import React from "react";
-
+import './Footer.css'
 import footer_logo from '../assets/logo_big.png'
 import instagram_icon from '../assets/instagram_icon.png'
-import pinterest_icon from '../assets/pintester_icon.png' 
+import pintester_icon from '../assets/pintester_icon.png'
 import whatsapp_icon from '../assets/whatsapp_icon.png'
 
+
 const Footer = () => {
-   return(
-     <>
-     <div className="flex flex-col justify-center items-center gap-6 mt-6 mb-4">
-        <div className="flex items-center gap-5">
-            <img src={footer_logo} alt="" width={50} height={50} />
-            <p className="text-[#383838] text-4xl font-semibold"> SHOPPER</p>
-        </div>
+    return (
+        <div className='footer'>
+            <div className="footer-logo">
+                <img src={footer_logo} alt="" />
+                <p>SHOPPER</p>
+            </div>
+            <ul className="footer-links">
+                <li>Company</li>
+                <li>Products</li>
+                <li>Offices</li>
+                <li>About</li>
+                <li>Contact</li>
 
-        <ul className="flex list-none gap-6 text-[#252525] text-lg">
-            <li className="cursor-pointer">Company</li>
-            <li className="cursor-pointer">Products</li>
-            <li className="cursor-pointer">Offices</li>
-            <li className="cursor-pointer">About</li>
-            <li className="cursor-pointer">Contact</li>
-        </ul>
-
-        <div className="flex gap-5">
-            <div className="p-4 bg-[#fbfbfb] border-1 border-[#ebebeb] rounded-full">
-                <img src={instagram_icon} alt="" width={30} height={30} />
+            </ul>
+            <div className="footer-social-icon">
+                <div className="footer-icons-container">
+                    <img src={instagram_icon} alt="" />
+                </div>
+                <div className="footer-icons-container">
+                    <img src={pintester_icon} alt="" />
+                </div>
+                <div className="footer-icons-container">
+                    <img src={whatsapp_icon} alt="" />
+                </div>
             </div>
-            <div className="p-4 bg-[#fbfbfb] border-1 border-[#ebebeb] rounded-full">
-                <img src={pinterest_icon} alt="" width={30} height={30} />
-            </div>
-            <div className="p-4 bg-[#fbfbfb] border-1 border-[#ebebeb] rounded-full">
-                <img src={whatsapp_icon} alt="" width={30} height={30} />
+            <div className="footer-copyright">
+                <hr />
+                <p>Copyright @ 2023 - All Right Reserved.</p>
             </div>
         </div>
-        
-        <div className="flex flex-col items-center gap-4 text-[#1a1a1a] text-lg">
-            <hr className="w-100% border-none rounded-xl h-1 bg-[#c7c7c7]" />
-            <p className="font-semibold">Copyright @ShoppingHub-All Rights Reserved</p>
-        </div>
-     </div>
-     </>
-   )
+    )
 }
 export default Footer;
