@@ -1,15 +1,17 @@
 import React from 'react';
+import '../Items/Item.css';
+
 
 const Item = (props) => {
  return(
-  <div className='w-350 transform hover:scale-105 transition duration-600'>
+  <div className='item'>
      <img src = {props.image} alt = ""/>
-     <p className='mt-6 mb-6 ml-0 mr-0'>{props.name}</p>
-     <div className='flex gap-5'>
-      <div className='text-[#374151] text-xl font-semibold'>
+     <p>{props.name}</p>
+     <div className='item-prices'>
+      <div className='item-price-new'>
              {props.new_price}
       </div>
-      <div className='text-[#8c8c8c] text-xl font-medium line-through'>
+      <div className='item-price-old'>
             {props.old_price}
       </div>
      </div>
