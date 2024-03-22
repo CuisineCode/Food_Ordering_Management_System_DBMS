@@ -3,22 +3,19 @@
     justify-content: space-around;
     padding: 12px;
     box-shadow: 0 1px 3px -2px black;
-    background: #f6e6d9;
-    border-bottom: 1px solid #6e6565;
+    background: #FFDABE;
+    border-bottom: 1px solid #b9b2b2;
 }
 .nav-logo{
     display:flex;
     align-items: center;
     size: 10px;
-    gap: 0px;
-    margin-right:0;
-    
-
+    gap: 10px;
 }
 .nav-logo p{
-    color: #171717;
+    color: #2c2a2a;
     font-size: 30px;
-    font-weight: 700;
+    font-weight: 650;
     
 }
 .nav-menu{
@@ -26,7 +23,7 @@
     align-items: center;
     list-style: none;
     gap:70px;
-    color: #000000;
+    color: #252121;
     font-size: 20px;
     font-weight: 600;
 }
@@ -56,7 +53,7 @@
     outline: none;
     border: 1px solid #7a7a7a;
     border-radius: 75px;
-    color: #000000;
+    color: #2c2a2a;
     font-size: 20px;
     font-weight:600;
     background: #edbd99;
