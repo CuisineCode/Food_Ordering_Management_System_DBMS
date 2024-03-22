@@ -3,8 +3,8 @@
     justify-content: space-around;
     padding: 12px;
     box-shadow: 0 1px 3px -2px black;
-    background: #FFE2CC;
-    border-bottom: 1px solid #b9b2b2;
+   
+
 }
 .nav-logo{
     display:flex;
@@ -50,13 +50,13 @@
 .nav-login-cart button{
     width: 157px;
     height: 58px;
-    outline: none;
-    border: 1px solid #7a7a7a;
+    
+   
     border-radius: 75px;
-    color: #2c2a2a;
+
     font-size: 20px;
     font-weight:600;
-    background: #edbd99;
+    background: #F5C1C1;
     cursor: pointer;
 }
 .nav-login-cart button:active{
