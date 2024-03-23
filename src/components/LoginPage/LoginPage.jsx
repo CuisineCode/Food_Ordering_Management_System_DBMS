@@ -1,9 +1,9 @@
-// LoginForm.js
+
 import React from 'react';
-import './LoginPage.css';
+import '../LoginPage/LoginPage.css';
 import { FaUser, FaLock } from 'react-icons/fa';
 
-const LoginForm = ({ onClose }) => {
+const LoginPage = ({ onClose }) => {
   const handleOverlayClick = (e) => {
     if (e.target.classList.contains('modal-overlay')) {
       onClose();
