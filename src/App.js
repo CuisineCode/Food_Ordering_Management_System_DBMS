@@ -11,12 +11,15 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import men_banner from './components/assets/banner_mens.png'
 import women_banner from './components/assets/banner_women.png'
 import kid_banner from './components/assets/banner_kids.png'
+import LoginPage from './components/LoginPage/LoginPage'; 
+
 
 
 
 function App() {
   return (
     <div>
+      <LoginPage/>
       <BrowserRouter>
         <Navbar />
         <Routes>
