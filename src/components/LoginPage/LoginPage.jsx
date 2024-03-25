@@ -1,7 +1,6 @@
-
 import React from 'react';
 import '../LoginPage/LoginPage.css';
-import { FaUser, FaLock } from 'react-icons/fa';
+import { FaUser, FaLock, FaTimes } from 'react-icons/fa';
 
 const LoginPage = ({ onClose }) => {
   const handleOverlayClick = (e) => {
@@ -13,6 +12,7 @@ const LoginPage = ({ onClose }) => {
   return (
     <div className='modal-overlay' onClick={handleOverlayClick}>
       <div className='modal'>
+        <FaTimes className='close-icon' onClick={onClose} />
         <form action=''>
           <h1>Login</h1>
           <div className='input-box'>

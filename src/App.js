@@ -33,7 +33,7 @@ function App() {
           </Route>
 
           <Route path='/cart' element={<Cart />} />
-
+          <Route path='/login' element={<LoginPage onClose={() => console.log('Close button clicked')} />} />
         </Routes>
         <Footer/>
 
