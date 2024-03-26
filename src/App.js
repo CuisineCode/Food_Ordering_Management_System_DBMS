@@ -13,7 +13,7 @@ import men_banner from './components/assets/banner_mens.png'
 import women_banner from './components/assets/banner_women.png'
 import kid_banner from './components/assets/banner_kids.png'
 import LoginPage from './components/LoginPage/LoginPage'; 
-
+import Register from './components/Register/Register';
 
 
 
@@ -34,6 +34,7 @@ function App() {
 
           <Route path='/cart' element={<Cart />} />
           <Route path='/login' element={<LoginPage onClose={() => console.log('Close button clicked')} />} />
+          <Route path='/register' element={<Register onClose={() => console.log('Close button clicked')} />} />
         </Routes>
         <Footer/>
 
