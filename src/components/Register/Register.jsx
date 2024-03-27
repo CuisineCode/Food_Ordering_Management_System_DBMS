@@ -12,10 +12,9 @@ const Register = ({ onClose }) => {
   return (
     <div className='modal-overlay' onClick={handleOverlayClick}>
       <div className='modal'>
-        <FaTimes className='close-icon' onClick={onClose} />
+        <FaTimes className='close-icon' onClick={onClose} />  
         <form action=''>
           <h1>Register</h1>
-          
           <div className='input-box'>
             <input type='text' placeholder='Username' required />
           </div>
@@ -33,6 +32,11 @@ const Register = ({ onClose }) => {
           </div> 
 
           <button type='submit'>Register</button>
+          <div className='register-link'>
+            <p>
+              Have an account?<a href='/login'> Login</a>
+            </p>
+          </div>
         </form>
       </div>
     </div>

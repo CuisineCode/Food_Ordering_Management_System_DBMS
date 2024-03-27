@@ -27,7 +27,7 @@ const LoginPage = ({ onClose }) => {
 
           <div className='forgot-password'>
             <label>
-              <input type='checkbox' />Remember me
+              <input type='checkbox' /> Remember me
             </label>
             <a href='#'>Forgot password?</a>
           </div>

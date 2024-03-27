@@ -75,12 +75,11 @@
   }
   
   .close-icon {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    position:relative;
+    right:-420px;
     cursor: pointer;
-    color: #888;
-    font-size: 24px;
+    color: #2c2828;
+    font-size: 26px;
   }
   
   .close-icon:hover {
