@@ -9,7 +9,7 @@ import LoginPage from '../LoginPage/LoginPage';
 const Navbar = () => {
 
     const [menu, setMenu] = useState("shop");
-    const [isLoginPageOpen, setIsLoginPageOpen] = useState(false); // State for login form modal
+    const [isLoginPageOpen, setIsLoginPageOpen] = useState(false); 
 
     const openLoginPage = () => {
         setIsLoginPageOpen(true);
