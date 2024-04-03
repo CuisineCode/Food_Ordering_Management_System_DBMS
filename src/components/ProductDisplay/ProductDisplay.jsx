@@ -33,20 +33,26 @@ const ProductDisplay = (props) => {
                     <div className="productdisplay-right-price-new">${product.new_price}</div>
                 </div>
                 <div className="productdisplay-right-description"></div>
-            </div>
-            <div className="productdisplay-right-size">
-                <h1>Select Size</h1>
-                <div className="productdisplay-right-sizes">
-                    <div>S</div>
-                    <div>M</div>
-                    <div>L</div>
-                    <div>XL</div>
-                    <div>XXL</div>
+                A lightweight, usually knitted , close-fitting overall guaranteed a best fit and can be worn on any occassion.
+                
+                <div className="productdisplay-right-size">
+                    <h1>Select Size</h1>
+                    <div className="productdisplay-right-sizes">
+                        <div>S</div>
+                        <div>M</div>
+                        <div>L</div>
+                        <div>XL</div>
+                        <div>XXL</div>
+                    </div>
                 </div>
+                
+                <div className="productdisplay-right-button">
+                    <button>ADD TO CART</button>
+                </div>
+                
+                <p className="productdisplay-right-category"><span>Category:</span> Women, T-Shirt, Crop Top</p>
+                <p className="productdisplay-right-category"><span>Tags:</span> Modern, Latest</p>
             </div>
-            <button>ADD TO CART</button>
-            <p className="productdisplay-right-category"><span>Category:</span> Women, T-Shirt, Crop Top</p>
-            <p className="productdisplay-right-category"><span>Tags:</span> Modern, Latest</p>
         </div>
     );
 }
