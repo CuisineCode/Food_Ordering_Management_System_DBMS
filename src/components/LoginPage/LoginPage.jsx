@@ -2,7 +2,7 @@ import React from 'react';
 import '../LoginPage/LoginPage.css';
 import { FaUser, FaLock, FaTimes } from 'react-icons/fa';
 
-const LoginPage = ({ onClose }) => {
+const LoginPage = ({ onClose, openRegister }) => {
   const handleOverlayClick = (e) => {
     if (e.target.classList.contains('modal-overlay')) {
       onClose();
@@ -36,7 +36,7 @@ const LoginPage = ({ onClose }) => {
 
           <div className='register-link'>
             <p>
-              Don't have an account?<a href='/register'>Register</a>
+              Don't have an account?<a href='#' onClick={openRegister}>Register</a>
             </p>
           </div>
         </form>
