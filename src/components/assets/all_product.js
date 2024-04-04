@@ -70,7 +70,7 @@ let all_product = [
   },
   {
     id: 5,
-    name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
+    name: "Ephemeral Melody Striped Echo Blouse",
     category: "women",
     image: p5_img,
     new_price: 85.0,
@@ -78,15 +78,15 @@ let all_product = [
   },
   {
     id: 6,
-    name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
+    name: "Quantum Flux Collar Whirlwind Top",
     category: "women",
     image: p6_img,
-    new_price: 85.0,
-    old_price: 120.5,
+    new_price: 65.0,
+    old_price: 100.5,
   },
   {
     id: 7,
-    name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
+    name: "Celestial Symphony Flutter Serenade Shirt",
     category: "women",
     image: p7_img,
     new_price: 85.0,
@@ -94,7 +94,7 @@ let all_product = [
   },
   {
     id: 8,
-    name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
+    name: "Nebulous Striped Cascade Harmony Blouse",
     category: "women",
     image: p8_img,
     new_price: 85.0,
@@ -102,7 +102,7 @@ let all_product = [
   },
   {
     id: 9,
-    name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
+    name: "Ethereal Zenith Collar Fusion Ensemble",
     category: "women",
     image: p9_img,
     new_price: 85.0,
@@ -110,7 +110,7 @@ let all_product = [
   },
   {
     id: 10,
-    name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
+    name: "Astral Nexus Flutter Euphoria Attire",
     category: "women",
     image: p10_img,
     new_price: 85.0,
@@ -118,7 +118,7 @@ let all_product = [
   },
   {
     id: 11,
-    name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
+    name: "Radiant Flux Striped Harmony Raiment",
     category: "women",
     image: p11_img,
     new_price: 85.0,
@@ -126,7 +126,7 @@ let all_product = [
   },
   {
     id: 12,
-    name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
+    name: "Enigmatic Luminary Collar Melody Vestment",
     category: "women",
     image: p12_img,
     new_price: 85.0,
@@ -174,31 +174,31 @@ let all_product = [
   },
   {
     id: 18,
-    name: "Men Green Solid Zippered Full-Zip Slim Fit Bomber Jacket",
+    name: "Ephemeral Melody Striped Echo Blouse",
     category: "men",
     image: p18_img,
-    new_price: 85.0,
-    old_price: 120.5,
+    new_price: 67.0,
+    old_price: 100.5,
   },
   {
     id: 19,
-    name: "Men Green Solid Zippered Full-Zip Slim Fit Bomber Jacket",
+    name: "Quantum Flux Collar Whirlwind Top",
     category: "men",
     image: p19_img,
-    new_price: 85.0,
+    new_price: 95.0,
     old_price: 120.5,
   },
   {
     id: 20,
-    name: "Men Green Solid Zippered Full-Zip Slim Fit Bomber Jacket",
+    name: "Celestial Symphony Flutter Serenade Shirt",
     category: "men",
     image: p20_img,
-    new_price: 85.0,
-    old_price: 120.5,
+    new_price: 50.0,
+    old_price: 90.5,
   },
   {
     id: 21,
-    name: "Men Green Solid Zippered Full-Zip Slim Fit Bomber Jacket",
+    name: "Astral Nexus Flutter Euphoria Attire",
     category: "men",
     image: p21_img,
     new_price: 85.0,
@@ -206,7 +206,7 @@ let all_product = [
   },
   {
     id: 22,
-    name: "Men Green Solid Zippered Full-Zip Slim Fit Bomber Jacket",
+    name: "Radiant Flux Striped Harmony Raiment",
     category: "men",
     image: p22_img,
     new_price: 85.0,
@@ -214,7 +214,7 @@ let all_product = [
   },
   {
     id: 23,
-    name: "Men Green Solid Zippered Full-Zip Slim Fit Bomber Jacket",
+    name: "Enigmatic Luminary Collar Melody Vestment",
     category: "men",
     image: p23_img,
     new_price: 85.0,
@@ -222,7 +222,7 @@ let all_product = [
   },
   {
     id: 24,
-    name: "Men Green Solid Zippered Full-Zip Slim Fit Bomber Jacket",
+    name: "Nebulous Striped Cascade Harmony Blouse",
     category: "men",
     image: p24_img,
     new_price: 85.0,
@@ -268,62 +268,62 @@ let all_product = [
     new_price: 85.0,
     old_price: 120.5,
   },
-  {
+ {
     id: 30,
-    name: "Boys Orange Colourblocked Hooded Sweatshirt",
+    name: "Citrus Blaze Colorblock Hoodie",
     category: "kid",
     image: p30_img,
     new_price: 65.0,
     old_price: 120.5,
-  },
-  {
+},
+{
     id: 31,
-    name: "Boys Orange Colourblocked Hooded Sweatshirt",
+    name: "Zesty Zing Hooded Sweatshirt",
     category: "kid",
     image: p31_img,
     new_price: 85.0,
     old_price: 120.5,
-  },
-  {
+},
+{
     id: 32,
-    name: "Boys Orange Colourblocked Hooded Sweatshirt",
+    name: "Tangerine Tango Hoodie",
     category: "kid",
     image: p32_img,
     new_price: 90.0,
     old_price: 120.5,
-  },
-  {
+},
+{
     id: 33,
-    name: "Boys Orange Colourblocked Hooded Sweatshirt",
+    name: "Sunburst Spectrum Hooded Sweater",
     category: "kid",
     image: p33_img,
     new_price: 85.0,
     old_price: 120.5,
-  },
-  {
+},
+{
     id: 34,
-    name: "Boys Orange Colourblocked Hooded Sweatshirt",
+    name: "Blaze Burst Colorblock Pullover",
     category: "kid",
     image: p34_img,
     new_price: 85.0,
     old_price: 120.5,
-  },
-  {
+},
+{
     id: 35,
-    name: "Boys Orange Colourblocked Hooded Sweatshirt",
+    name: "Orange Crush Hooded Sweatshirt",
     category: "kid",
     image: p35_img,
     new_price: 75.0,
     old_price: 120.5,
-  },
-  {
+},
+{
     id: 36,
-    name: "Boys Orange Colourblocked Hooded Sweatshirt",
+    name: "Sunset Splash Colorblock Hoodie",
     category: "kid",
     image: p36_img,
     new_price: 85.0,
     old_price: 120.5,
-  },
+}
 ];
 
 export default all_product;
