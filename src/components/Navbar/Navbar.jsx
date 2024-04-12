@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './Navbar.css';
 import logo from '../assets/logo.png';
 import cart_icon from '../assets/cart_icon.png';
 import { Link } from 'react-router-dom';
 import LoginPage from '../LoginPage/LoginPage';
 import Register from '../Register/Register';
+import { ShopContext } from '../../context/ShopContext';
 
 const Navbar = () => {
   const [menu, setMenu] = useState("shop");
+  const {getTotalCartItems} = useContext(ShopContext)
+
   const [isLoginPageOpen, setIsLoginPageOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
 
@@ -45,8 +48,8 @@ const Navbar = () => {
       </ul>
       <div className="nav-login-cart">
         <button onClick={openLoginPage}>Login</button>
-        <img src={cart_icon} alt="" />
-        <div className="nav-cart-count">0</div>
+        <Link to = '/cart'><img src={cart_icon} alt="" /></Link>
+        <div className="nav-cart-count">{getTotalCartItems()}</div>
       </div>
       {isLoginPageOpen && (
         <LoginPage
