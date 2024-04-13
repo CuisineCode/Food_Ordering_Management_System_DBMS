@@ -19,11 +19,27 @@
     height: 163px;
 }
 
+.productdisplay-img-list img:hover{
+    transform: scale(1.1);
+}
+
+.productdisplay-img{
+    position: relative;
+    width:586px;
+    height:780px;
+    overflow: hidden;
+}
+
 .productdisplay-main-img{
     width: 586px;
     height: 700px;
+    object-fit:contain;
+    transition:transform 0.3s ease;
 }
 
+.productdisplay-img:hover .productdisplay-main-img{
+    transform:scale(1.1);
+}
 .productdisplay-right{
     margin: 0px 70px;
     display: flex;
