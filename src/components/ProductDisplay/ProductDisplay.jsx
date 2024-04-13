@@ -42,14 +42,41 @@ const ProductDisplay = (props) => {
                 <div className="productdisplay-right-description">
                     A lightweight, usually knitted, close-fitting overall guaranteed a best fit and can be worn on any occasion.
                 </div>
+                
                 <div className="productdisplay-right-size">
                     <h1>Select Size</h1>
                     <div className="productdisplay-right-sizes">
-                        <div onClick={() => setSelectedSize("S")}>S</div>
-                        <div onClick={() => setSelectedSize("M")}>M</div>
-                        <div onClick={() => setSelectedSize("L")}>L</div>
-                        <div onClick={() => setSelectedSize("XL")}>XL</div>
-                        <div onClick={() => setSelectedSize("XXL")}>XXL</div>
+
+                        <div
+                            className={selectedSize === 'S' ? 'selected-size' : ''}
+                            onClick={() => setSelectedSize('S')}
+                        >
+                            S
+                        </div>
+                        <div
+                            className={selectedSize === 'M' ? 'selected-size' : ''}
+                            onClick={() => setSelectedSize('M')}
+                        >
+                            M
+                        </div>
+                        <div
+                            className={selectedSize === 'L' ? 'selected-size' : ''}
+                            onClick={() => setSelectedSize('L')}
+                        >
+                            L
+                        </div>
+                        <div
+                            className={selectedSize === 'XL' ? 'selected-size' : ''}
+                            onClick={() => setSelectedSize('XL')}
+                        >
+                            XL
+                        </div>
+                        <div
+                            className={selectedSize === 'XXL' ? 'selected-size' : ''}
+                            onClick={() => setSelectedSize('XXL')}
+                        >
+                            XXL
+                        </div>
                     </div>
                 </div>
 

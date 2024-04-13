@@ -96,13 +96,21 @@
 
 }
 
-.productdisplay-right-sizes div{
-    padding: 18px 24px;
-    background: #fbfbfb;
-    border: 1px solid #ebebeb;
-    border-radius: 3px;
-    cursor:pointer;
+.productdisplay-right-sizes {
+    display: flex;
 }
+
+.productdisplay-right-sizes > div {
+    padding: 5px 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.selected-size {
+    background-color: #3498db; /* Change to desired color */
+    color: #fff; /* Change to desired text color */
+}
+
 
 .productdisplay-right button{
     padding: 20px 40px;
