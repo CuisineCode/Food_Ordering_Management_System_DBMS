@@ -1,21 +1,25 @@
 import React, { useState, useContext } from "react";
 import '../ProductDisplay/ProductDisplay.css'
 import { ShopContext } from "../../context/ShopContext";
-import star_icon from '../assets/star_icon.png'
-import star_dull_icon from '../assets/star_dull_icon.png'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const ProductDisplay = (props) => {
     const { product } = props;
     const { addToCart } = useContext(ShopContext);
     const [selectedSize, setSelectedSize] = useState(""); // State to store the selected size
     const [errorMessage, setErrorMessage] = useState(""); // State to manage error message
+    const [addedToCartMessage, setAddedToCartMessage] = useState("");
 
     const handleAddToCart = () => {
         if (selectedSize === "") {
             setErrorMessage("Please select a size");
         } else {
             addToCart(product.id, selectedSize); // Pass selected size to addToCart function
-            setErrorMessage(""); // Clear error message
+            setErrorMessage(""); 
+            setAddedToCartMessage("Item added to cart");
+            toast.success("Item added to cart", { position: "top-center" });
         }
     };
 
@@ -82,11 +86,13 @@ const ProductDisplay = (props) => {
 
                 <div className="productdisplay-right-button">
                     <button onClick={handleAddToCart}>ADD TO CART</button>
+                    {addedToCartMessage && <div>{addedToCartMessage}</div>}
                 </div>
 
                 {errorMessage && <div className="error-message">{errorMessage}</div>}
             </div>
         </div>
+        
     );
 }
 

@@ -14,13 +14,14 @@ import women_banner from './components/assets/banner_women.png'
 import kid_banner from './components/assets/banner_kids.png'
 import LoginPage from './components/LoginPage/LoginPage'; 
 import Register from './components/Register/Register';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 
 function App() {
   return (
     <div>
-      
+      <ToastContainer />
       <BrowserRouter>
         <Navbar />
         <Routes>
