@@ -37,12 +37,20 @@
     cursor:pointer;
 }
 
-.cartitems-quantity{
-    width: 64px;
-    height:50px;
-    border : 2px solid #ebebeb;
-    background: #fff;
+.cartitems-quantity {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #ffffff;
+    background: #ffffff;
+    margin-right: 100px; /* Add margin-right to create space between buttons */
+    display: inline-flex; /* Ensure the buttons are displayed inline */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+}
 
+.cartitems-quantity.increment {
+    margin-left: 100px; 
 }
 
 .cartitems-down{
@@ -78,45 +86,6 @@
 
 }
 
-.cartitems-promocode{
-    flex:1;
-    font-size: 16px;
-    font-weight: 500;
-    
-}
-
-.cartitems-promocode p{
-    color: #555;
-
-}
-
-.cartitems-promobox{
-    width:504px;
-    margin-top: 15px;
-    padding-left: 20px;
-    height: 58px;
-    background: #eaeaea;
-
-}
-
-.cartitems-promobox input{
-    border:none;
-    outline: none;
-    background: transparent;
-    font-size: 16px;
-    width: 330px;
-    height: 50px;
-
-}
-
-.cartitems-promobox button{
-    width: 170px;
-    height: 58px;
-    font-size: 16px;
-    background: black;
-    color: white;
-    cursor: pointer;
-}
 
 
 

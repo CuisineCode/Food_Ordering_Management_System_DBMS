@@ -3,52 +3,53 @@ import './CartItems.css'
 import { ShopContext } from "../../context/ShopContext";
 import remove_icon from '../assets/cart_cross_icon.png'
 const CartItems = () => {
-    const {getTotalCartAmount,all_product,cartItems, removeFromCart} = useContext(ShopContext);
+    const { getTotalCartAmount, all_product, cartItems, removeFromCart, incrementItemQuantity, decrementItemQuantity } = useContext(ShopContext);
 
-  return(
-   <div className="cartitems">
-    <div className="cartitems-format-main">
-     <p>Products</p>
-     <p>Title</p>
-     <p>Price</p>
-     <p>Quantity</p>
-     <p>Total</p>
-      <p>Remove</p>
-
-    </div>
-    <hr />
-    {all_product.map((e) => {
-  const keys = Object.keys(cartItems);
-  const cartItemKeys = keys.filter((key) => key.startsWith(`${e.id}-`));
-  return cartItemKeys.map((key) => {
-    const size = key.split("-")[1];
-    if (cartItems[key] > 0) {
-      return (
-        <div>
-          <div className="cartitems-format cartitems-format-main">
-            <img src={e.image} alt="" className="carticon-product-icon" />
-            <p>
-              {e.name} - {size}
-            </p>
-            <p>${e.new_price}</p>
-            <button className="cartitems-quantity">{cartItems[key]}</button>
-            <p>${e.new_price * cartItems[key]}</p>
-            <img
-              className="cartitems-remove-icon"
-              src={remove_icon}
-              onClick={() => {
-                removeFromCart(e.id, size);
-              }}
-              alt=""
-            />
-          </div>
-          <hr />
-        </div>
-      );
-    }
-    return null;
-  });
-})}
+    return (
+        <div className="cartitems">
+            <div className="cartitems-format-main">
+                <p>Products</p>
+                <p>Title</p>
+                <p>Price</p>
+                <p>Quantity</p>
+                <p>Total</p>
+                <p>Remove</p>
+            </div>
+            <hr />
+            {all_product.map((e) => {
+                const keys = Object.keys(cartItems);
+                const cartItemKeys = keys.filter((key) => key.startsWith(`${e.id}-`));
+                return cartItemKeys.map((key) => {
+                    const size = key.split("-")[1];
+                    if (cartItems[key] > 0) {
+                        return (
+                            <div key={key}>
+                                <div className="cartitems-format cartitems-format-main">
+                                    <img src={e.image} alt="" className="carticon-product-icon" />
+                                    <p>
+                                        {e.name} - {size}
+                                    </p>
+                                    <p>${e.new_price}</p>
+                                    <button className="cartitems-quantity" onClick={() => decrementItemQuantity(e.id, size)}>-</button>
+                                    <span>{cartItems[key]}</span>
+                                    <button className="cartitems-quantity" onClick={() => incrementItemQuantity(e.id, size)}>+</button>
+                                    <p>${e.new_price * cartItems[key]}</p>
+                                    <img
+                                        className="cartitems-remove-icon"
+                                        src={remove_icon}
+                                        onClick={() => {
+                                            removeFromCart(e.id, size);
+                                        }}
+                                        alt=""
+                                    />
+                                </div>
+                                <hr />
+                            </div>
+                        );
+                    }
+                    return null;
+                });
+            })}
     
 
  

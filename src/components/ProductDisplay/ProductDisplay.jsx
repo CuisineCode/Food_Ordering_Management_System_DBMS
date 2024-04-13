@@ -18,7 +18,6 @@ const ProductDisplay = (props) => {
         } else {
             addToCart(product.id, selectedSize); // Pass selected size to addToCart function
             setErrorMessage(""); 
-            setAddedToCartMessage("Item added to cart");
             toast.success("Item added to cart", { position: "top-center" });
         }
     };
