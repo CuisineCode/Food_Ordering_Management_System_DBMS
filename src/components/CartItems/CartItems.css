@@ -1,40 +1,50 @@
-.cartitems{
-    margin:100px 170px;
+.cartitems {
+    margin: 100px 170px;
 }
 
-.cartitems hr{
-    height:3px;
+.cartitems hr {
+    height: 3px;
     background: #e2e2e2;
     border: 0;
+   
 }
 
-.cartitems-format-main{
+.cartitems-format-main {
     display: grid;
-    grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 0.5fr 2fr 1fr 1.5fr 1fr 1fr;
     align-items: center;
     gap: 75px;
     padding: 20px 0px;
     color: #454545;
-    font-size:18px;
-    font-weight:600;
-
+    font-size: 18px;
+    font-weight: 600;
 }
 
-.cartitems-format{
+.cartitems-format-main>p:nth-child(4) {
+   
+    margin-left: 45px;
+ 
+}
+
+.cartitems-format {
     font-size: 17px;
     font-weight: 500;
 }
 
-.carticon-product-icon{
-    height:62px;
-
-
+.carticon-product-icon {
+    height: 62px;
 }
 
-.cartitems-remove-icon{
-    width:15px;
-    margin:0px 40px;
-    cursor:pointer;
+.cartitems-remove-icon {
+    width: 15px;
+    margin: 0px 40px;
+    cursor: pointer;
+}
+
+.cartitems-quantity-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .cartitems-quantity {
@@ -43,39 +53,43 @@
     height: 30px;
     border: 2px solid #ffffff;
     background: #ffffff;
-    margin-right: 100px; /* Add margin-right to create space between buttons */
-    display: inline-flex; /* Ensure the buttons are displayed inline */
-    align-items: center; /* Center content vertically */
-    justify-content: center; /* Center content horizontally */
+    margin-right: 15px;
+    margin-left: 15px; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cartitems-quantity-value{
+    margin : 0px 20px;
 }
 
 .cartitems-quantity.increment {
-    margin-left: 100px; 
+    margin-left: 10px;
 }
 
-.cartitems-down{
+.cartitems-down {
     display: flex;
-    margin:100px 0px;
+    margin: 100px 0px;
 }
 
-.cartitems-total{
-    flex:1;
+.cartitems-total {
+    flex: 1;
     display: flex;
     flex-direction: column;
     margin-right: 200px;
     gap: 40px;
 }
 
-.cartitems-total-item{
+.cartitems-total-item {
     display: flex;
     justify-content: space-between;
     padding: 15px 0px;
-
 }
 
-.cartitems-total button{
-    width:262px;
-    height:58px;
+.cartitems-total button {
+    width: 262px;
+    height: 58px;
     outline: none;
     border: none;
     background: #ff5a5a;
@@ -83,18 +97,4 @@
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
