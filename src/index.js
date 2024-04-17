@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 
-import ShopContextProvider from './context/ShopContext';
+
 import ShopProvider from './context/ShopContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
