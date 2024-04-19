@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import '../ProductDisplay/ProductDisplay.css'
 import { ShopContext } from "../../context/ShopContext";
 import { toast } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -21,6 +22,17 @@ const ProductDisplay = (props) => {
             toast.success("Item added to cart", { position: "top-center" });
         }
     };
+
+    const navigate = useNavigate();
+
+    const handleProceedToCheckout = () => {
+        if (selectedSize === "") {
+            setErrorMessage("Please select a size");
+        }
+    else{
+    navigate('/payment');
+    }
+  };
 
     return (
         <div className="productdisplay">
@@ -85,8 +97,13 @@ const ProductDisplay = (props) => {
 
                 <div className="productdisplay-right-button">
                     <button onClick={handleAddToCart}>ADD TO CART</button>
+                    <div className="productdisplay-right-buy-now">
+                        <button onClick={handleProceedToCheckout}>BUY NOW</button>
+                    </div>
+                    
                     {addedToCartMessage && <div>{addedToCartMessage}</div>}
                 </div>
+
 
                 {errorMessage && <div className="error-message">{errorMessage}</div>}
             </div>
