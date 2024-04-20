@@ -12,7 +12,8 @@ const LoginPage = ({ onClose, openRegister }) => {
   return (
     <div className='modal-overlay' onClick={handleOverlayClick}>
       <div className='modal'>
-        <FaTimes className='close-icon' onClick={onClose} />
+         <FaTimes className='close-icon' onClick={onClose} />
+       
         <form action=''>
           <h1>Login</h1>
           <div className='input-box'>

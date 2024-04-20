@@ -32,7 +32,7 @@ function App() {
           <Route path='/cart' element={<Cart />} />
           <Route path='/login' element={<LoginPage onClose={() => console.log('Close button clicked')} />} />
           <Route path='/register' element={<Register onClose={() => console.log('Close button clicked')} />} />
-          <Route path='/payment' element={<PaymentPage />} /> {/* Add the payment route */}
+          <Route path='/payment' element={<PaymentPage />} /> 
         </Routes>
         <Footer />
       </BrowserRouter>

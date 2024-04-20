@@ -51,6 +51,13 @@
     border-radius: 4px;
     outline: none;
   }
+
+    .close-icon {
+      position: absolute;
+      top: 50%;
+      right: 50%;
+  
+    }
   
   .icon {
     position: absolute;

@@ -1,7 +1,7 @@
 import React, {useContext} from 'react'
 import './CSS/ShopCategory.css'
 import { ShopContext } from '../context/ShopContext'
-import dropdown_icon from '../components/assets/dropdown_icon.png' ;
+
 import Item from '../components/Items/Item'
 
 
@@ -12,10 +12,7 @@ return (
     <br/>
       <div className="shopcategory-indexSort">
         
-        {/*<div className="shopcategory-sort">
-          Sort by <img src = {dropdown_icon} alt = ""/>
-
-</div>*/}
+        
       </div>
 
       <div className="shopcategory-products">
@@ -31,9 +28,7 @@ return (
         
         })}
       </div>
-      {/*<div className="shopcategory-loadmore">
-        Explore more
-      </div>*/}
+      
      </div>
 
 

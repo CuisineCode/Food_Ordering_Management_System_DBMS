@@ -234,3 +234,51 @@
 .enter-card-details:hover {
     background-color: #ffcc00;
 }
+
+.payment-method.net-banking .payment-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.net-banking-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.payment-info select {
+    width: 200px;
+   
+    height: 40px;
+  
+    padding: 0.5rem;
+    margin-right: 350px; 
+    font-size: 16px;
+   
+}
+
+.net-banking-options {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.net-banking-continue {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right:300px;
+    margin-left: auto;
+    width:150px;
+    height:40px;
+    
+}
+

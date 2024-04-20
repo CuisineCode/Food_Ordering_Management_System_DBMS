@@ -9,6 +9,8 @@ const PaymentPage = () => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
   const [upiId, setUpiId] = useState('');
   const [showCardDetailsModal, setShowCardDetailsModal] = useState(false);
+  const [showNetBankingOptions, setShowNetBankingOptions] = useState(false); 
+  const [selectedNetBankingOption, setSelectedNetBankingOption] = useState('');
 
   const handlePaymentMethodClick = (method) => {
     if (selectedPaymentMethod === method) {
@@ -20,6 +22,9 @@ const PaymentPage = () => {
       }
     }
   };
+
+  
+
 
   const handleUpiIdChange = (e) => {
     setUpiId(e.target.value);
@@ -36,6 +41,24 @@ const PaymentPage = () => {
   const handleCloseCardDetailsModal = () => {
     setShowCardDetailsModal(false);
   };
+
+   const toggleNetBankingOptions = () => {
+    setShowNetBankingOptions(!showNetBankingOptions);
+  };
+
+  const handleNetBankingOptionChange = (e) => {
+    setSelectedNetBankingOption(e.target.value);
+  };
+
+  const handleContinueNetBanking = () => {
+    if (selectedNetBankingOption) {
+      alert(`You will be securely directed to the ${selectedNetBankingOption} to enter your password and complete your purchase.`);
+    } else {
+      alert('Please select a Net Banking option.');
+    }
+  };
+
+
 
   return (
     <div className="payment-page-container">
@@ -139,26 +162,30 @@ const PaymentPage = () => {
                 <h3>Credit or debit card</h3>
               </div>
             </div>
-            <div className="payment-method">
-              <div className="payment-icon">
-                <i className="fas fa-money-bill-alt"></i>
-              </div>
-              <div className="payment-info">
-                <h3>EMI</h3>
-                <p>Unavailable for this payment. Why?</p>
-              </div>
-            </div>
+            
             <div className="payment-method">
               <div className="payment-icon">
                 <i className="fas fa-university"></i>
               </div>
               <div className="payment-info">
-                <h3>Net Banking</h3>
+                <h3 onClick={toggleNetBankingOptions}>Net Banking</h3>
+               {showNetBankingOptions && (
+                <div className='net-banking-options'>
+                <select onChange={handleNetBankingOptionChange}>
+                  <option>Airtel Payments Bank</option>
+                  <option>HDFC Bank</option>
+                  <option>State Bank of India</option>
+                  <option>Bank of Baroda</option>
+                  <option>Induslnd Bank</option>
+                </select>
+                <button className="net-banking-continue" onClick={handleContinueNetBanking}>Continue</button>
+                </div>
+               )}
               </div>
             </div>
           </div>
           <div className="promo-container">
-            <button className="continue-button">Continue</button>
+           {/* <button className="continue-button">Continue</button>*/}
           </div>
         </div>
       </div>
@@ -182,10 +209,14 @@ const CardDetailsModal = ({ onClose }) => {
       [name]: value,
     }));
   };
-
+  
   const handleEnterCardDetails = () => {
-    
+    if (cardDetails.name === '' || cardDetails.number === '' || cardDetails.expiryMonth === '' || cardDetails.expiryYear === '') {
+      alert('All fields are required.');
+    }
+    else{
     alert('Card details entered successfully!');
+    }
   };
 
   return (
@@ -195,26 +226,26 @@ const CardDetailsModal = ({ onClose }) => {
        <FaTimes className='close-icon' onClick={onClose} />
         
         <h2>Enter Card Details</h2>
-        <p>Please ensure your card is enabled for online transactions. Learn more</p>
+        <p>Please ensure your card is enabled for online transactions.</p>
         <input
           type="text"
           name="name"
           placeholder="Cardholder Name"
           value={cardDetails.name}
-          onChange={handleCardDetailsChange}
+          onChange={handleCardDetailsChange} required
         />
         <input
           type="text"
           name="number"
           placeholder="Card Number"
           value={cardDetails.number}
-          onChange={handleCardDetailsChange}
+          onChange={handleCardDetailsChange}  required
         />
         <div className="expiry-date">
           <select
             name="expiryMonth"
             value={cardDetails.expiryMonth}
-            onChange={handleCardDetailsChange}
+            onChange={handleCardDetailsChange}  required
           >
             <option value="">Month</option>
             <option value="01">January</option>
@@ -229,7 +260,7 @@ const CardDetailsModal = ({ onClose }) => {
             <option value="10">October</option>
             <option value="11">November</option>
             <option value="12">December</option>
-            {/* Add more options for months */}
+         
           </select>
           <select
             name="expiryYear"
@@ -244,7 +275,7 @@ const CardDetailsModal = ({ onClose }) => {
             <option value="2028">2028</option>
             <option value="2029">2029</option>
             <option value="2030">2030</option>
-            {/* Add more options for years */}
+          
           </select>
         </div>
         <button className="enter-card-details" onClick={handleEnterCardDetails}>Enter Card Details</button>
