@@ -51,7 +51,7 @@ const PaymentPage = () => {
   };
 
   const handleContinueNetBanking = () => {
-    if (selectedNetBankingOption) {
+    if (selectedNetBankingOption &&  selectedNetBankingOption !== 'Select a option') {
       alert(`You will be securely directed to the ${selectedNetBankingOption} to enter your password and complete your purchase.`);
     } else {
       alert('Please select a Net Banking option.');
@@ -172,6 +172,7 @@ const PaymentPage = () => {
                {showNetBankingOptions && (
                 <div className='net-banking-options'>
                 <select onChange={handleNetBankingOptionChange}>
+                  <option>Select a option</option>
                   <option>Airtel Payments Bank</option>
                   <option>HDFC Bank</option>
                   <option>State Bank of India</option>
