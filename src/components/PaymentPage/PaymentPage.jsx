@@ -226,8 +226,15 @@ const CardDetailsModal = ({ onClose, setShowCardDetailsModal, setShowCvvModal })
     expiryYear: '',
   });
 
+  const [isValidCardNumber, setIsValidCardNumber] = useState(true); 
+
   const handleCardDetailsChange = (e) => {
     const { name, value } = e.target;
+    if (name === 'number') {
+      // Card number validation
+      const isValid = /^[0-9]{4}\s[0-9]{4}\s[0-9]{4}\s[0-9]{4}$/.test(value);
+      setIsValidCardNumber(isValid);
+    }
     setCardDetails((prevCardDetails) => ({
       ...prevCardDetails,
       [name]: value,
@@ -237,6 +244,9 @@ const CardDetailsModal = ({ onClose, setShowCardDetailsModal, setShowCvvModal })
   const handleEnterCardDetails = () => {
     if (cardDetails.name === '' || cardDetails.number === '' || cardDetails.expiryMonth === '' || cardDetails.expiryYear === '') {
       alert('All fields are required.');
+    }
+    else if (!isValidCardNumber) {
+      alert('Please enter a valid card number.');
     } else {
       setShowCardDetailsModal(false);
       setShowCvvModal(true);
@@ -263,13 +273,14 @@ const CardDetailsModal = ({ onClose, setShowCardDetailsModal, setShowCvvModal })
           placeholder="Card Number"
           value={cardDetails.number}
           onChange={handleCardDetailsChange}
-          required
+          required className={isValidCardNumber ? '' : 'invalid-input'}
         />
+       
         <div className="expiry-date">
           <select
             name="expiryMonth"
             value={cardDetails.expiryMonth}
-            onChange={handleCardDetailsChange}
+            onChange={handleCardDetailsChange} 
             required
           >
             <option value="">Month</option>
@@ -302,6 +313,7 @@ const CardDetailsModal = ({ onClose, setShowCardDetailsModal, setShowCvvModal })
           </select>
         </div>
         <button className="enter-card-details" onClick={handleEnterCardDetails}>Enter Card Details</button>
+          {!isValidCardNumber && <p className="error-message">Please enter a valid card number in the format "1234 5678 9012 3456"</p>}
       </div>
     </div>
   );
