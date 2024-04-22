@@ -224,7 +224,7 @@ const CardDetailsModal = ({ onClose }) => {
     <div className="modal-overlay">
        
       <div className="modal-content">
-       <FaTimes className='close-icon' onClick={onClose} />
+       <FaTimes className='payment-close-icon' onClick={onClose} />
         
         <h2>Enter Card Details</h2>
         <p>Please ensure your card is enabled for online transactions.</p>
