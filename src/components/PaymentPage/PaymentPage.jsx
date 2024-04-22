@@ -9,8 +9,10 @@ const PaymentPage = () => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
   const [upiId, setUpiId] = useState('');
   const [showCardDetailsModal, setShowCardDetailsModal] = useState(false);
-  const [showNetBankingOptions, setShowNetBankingOptions] = useState(false); 
+  const [showCvvModal, setShowCvvModal] = useState(false);
+  const [showNetBankingOptions, setShowNetBankingOptions] = useState(false);
   const [selectedNetBankingOption, setSelectedNetBankingOption] = useState('');
+   const [isValidUpiId, setIsValidUpiId] = useState(true);
 
   const handlePaymentMethodClick = (method) => {
     if (selectedPaymentMethod === method) {
@@ -23,18 +25,21 @@ const PaymentPage = () => {
     }
   };
 
-  
-
-
   const handleUpiIdChange = (e) => {
-    setUpiId(e.target.value);
+    const enteredUpiId = e.target.value;
+   const isValid = /^[0-9]{10}@[a-z]{3,}$/.test(enteredUpiId);
+
+    setIsValidUpiId(isValid);
+    setUpiId(enteredUpiId);
   };
 
   const handleUpiIdSubmit = (e) => {
-    e.preventDefault();
-    if (upiId) {
-      alert(`Payment request sent to UPI ID ${upiId}`);
+     e.preventDefault();
+    if (/^[0-9]{10}@[a-z]{3,}$/.test(upiId)) { // 
+      alert(`Payment request sent to UPI ID ${upiId}. Kindly Proceed the payment through the chosen UPI App`);
       setUpiId('');
+    } else {
+      alert('Invalid UPI ID');
     }
   };
 
@@ -42,7 +47,7 @@ const PaymentPage = () => {
     setShowCardDetailsModal(false);
   };
 
-   const toggleNetBankingOptions = () => {
+  const toggleNetBankingOptions = () => {
     setShowNetBankingOptions(!showNetBankingOptions);
   };
 
@@ -51,13 +56,25 @@ const PaymentPage = () => {
   };
 
   const handleContinueNetBanking = () => {
-    if (selectedNetBankingOption &&  selectedNetBankingOption !== 'Select a option') {
+    if (selectedNetBankingOption && selectedNetBankingOption !== 'Select a option') {
       alert(`You will be securely directed to the ${selectedNetBankingOption} to enter your password and complete your purchase.`);
     } else {
       alert('Please select a Net Banking option.');
     }
   };
 
+  const handleCvvSubmit = (cvv) => {
+    if (cvv) {
+      alert('Card details verified. Kindly proceed with the above payment');
+      setShowCvvModal(false);
+    } else {
+      alert('Please enter the CVV');
+    }
+  };
+
+  const handleCloseCvvModal = () => {
+    setShowCvvModal(false);
+  };
 
 
   return (
@@ -114,11 +131,16 @@ const PaymentPage = () => {
                   <input
                     type="text"
                     placeholder="Enter UPI ID"
-                    className="upi-input"
+                    className={`upi-input ${isValidUpiId ? '' : 'invalid-input'}`}
                     value={upiId}
                     onChange={handleUpiIdChange}
                   />
+                  <button className="proceed-button" onClick={handleUpiIdSubmit} disabled={!isValidUpiId}>Proceed</button>
+                  {!isValidUpiId && <p className="upi-error-message">Please enter a valid UPI ID (e.g:1234567890@bankname)</p>}
+                  
                 </form>
+
+                
               </div>
             )}
             {selectedPaymentMethod === "phonepe" && (
@@ -190,12 +212,13 @@ const PaymentPage = () => {
           </div>
         </div>
       </div>
-      {showCardDetailsModal && <CardDetailsModal onClose={handleCloseCardDetailsModal} />}
+      {showCardDetailsModal && <CardDetailsModal onClose={handleCloseCardDetailsModal} setShowCardDetailsModal={setShowCardDetailsModal} setShowCvvModal={setShowCvvModal} />}
+      {showCvvModal && <CvvModal onSubmit={handleCvvSubmit} onClose={handleCloseCvvModal} />}
     </div>
   );
 };
 
-const CardDetailsModal = ({ onClose }) => {
+const CardDetailsModal = ({ onClose, setShowCardDetailsModal, setShowCvvModal }) => {
   const [cardDetails, setCardDetails] = useState({
     name: '',
     number: '',
@@ -210,22 +233,20 @@ const CardDetailsModal = ({ onClose }) => {
       [name]: value,
     }));
   };
-  
+
   const handleEnterCardDetails = () => {
     if (cardDetails.name === '' || cardDetails.number === '' || cardDetails.expiryMonth === '' || cardDetails.expiryYear === '') {
       alert('All fields are required.');
-    }
-    else{
-    alert('Card details entered successfully!');
+    } else {
+      setShowCardDetailsModal(false);
+      setShowCvvModal(true);
     }
   };
 
   return (
     <div className="modal-overlay">
-       
       <div className="modal-content">
-       <FaTimes className='payment-close-icon' onClick={onClose} />
-        
+        <FaTimes className='cvv-close-icon' onClick={onClose} />
         <h2>Enter Card Details</h2>
         <p>Please ensure your card is enabled for online transactions.</p>
         <input
@@ -233,20 +254,23 @@ const CardDetailsModal = ({ onClose }) => {
           name="name"
           placeholder="Cardholder Name"
           value={cardDetails.name}
-          onChange={handleCardDetailsChange} required
+          onChange={handleCardDetailsChange}
+          required
         />
         <input
           type="text"
           name="number"
           placeholder="Card Number"
           value={cardDetails.number}
-          onChange={handleCardDetailsChange}  required
+          onChange={handleCardDetailsChange}
+          required
         />
         <div className="expiry-date">
           <select
             name="expiryMonth"
             value={cardDetails.expiryMonth}
-            onChange={handleCardDetailsChange}  required
+            onChange={handleCardDetailsChange}
+            required
           >
             <option value="">Month</option>
             <option value="01">January</option>
@@ -261,7 +285,6 @@ const CardDetailsModal = ({ onClose }) => {
             <option value="10">October</option>
             <option value="11">November</option>
             <option value="12">December</option>
-         
           </select>
           <select
             name="expiryYear"
@@ -276,10 +299,47 @@ const CardDetailsModal = ({ onClose }) => {
             <option value="2028">2028</option>
             <option value="2029">2029</option>
             <option value="2030">2030</option>
-          
           </select>
         </div>
         <button className="enter-card-details" onClick={handleEnterCardDetails}>Enter Card Details</button>
+      </div>
+    </div>
+  );
+};
+
+const CvvModal = ({ onSubmit,onClose }) => {
+  const [cvv, setCvv] = useState('');
+  const [isValidCvv, setIsValidCvv] = useState(true);
+
+  const handleCvvChange = (e) => {
+    const enteredCvv = e.target.value;
+    const isValid = /^\d{3}$/.test(enteredCvv);
+    setIsValidCvv(isValid);
+    setCvv(enteredCvv);
+  };
+
+  const handleSubmit = () => {
+     if (/^\d{3}$/.test(cvv)) {
+      onSubmit(cvv);
+    } else {
+      setIsValidCvv(false);
+    }
+  };
+
+  return (
+    <div className="modal-overlay">
+      <div className="modal-content">
+         <FaTimes className='cvv-close-icon' onClick={onClose} />
+        <h2>Enter CVV</h2>
+        <input
+          type="text"
+          name="cvv"
+          placeholder="CVV"
+          value={cvv}
+          onChange={handleCvvChange} className={isValidCvv ? '' : 'invalid-input'}
+        />
+        {!isValidCvv && <p className="error-message">Please enter a valid 3-digit CVV</p>}
+        <button className="proceed-button" onClick={handleSubmit} disabled={!isValidCvv}>Proceed</button>
       </div>
     </div>
   );

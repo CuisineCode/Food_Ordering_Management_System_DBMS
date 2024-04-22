@@ -163,7 +163,9 @@
 .payment-close-icon{
     position: absolute;
         top: 0;
-        right: 0;
+        right: 3%;
+        height: 50px;
+        cursor: pointer;
 
 }
 
@@ -280,5 +282,94 @@
     width:150px;
     height:40px;
     
+}
+.proceed-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.proceed-button:hover {
+    background-color: #0056b3;
+}
+
+.cvv-close-icon{
+    position: absolute;
+        top: 0;
+        right: 3%;
+        height: 50px;
+        cursor: pointer;
+
+}
+
+.payment-info .upi-input {
+width: 260px;
+    height: 30px;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    margin-left: 500px;
+    /* Remove this line */
+    /* Adjust margin-right to create space between input and button */
+    margin-right: 20px;
+    /* Adjust this margin */
+    text-align: center;
+}
+
+.invalid-input {
+    border-color: red;
+}
+
+.error-message {
+    color: red;
+        font-size: 0.8rem;
+        margin-top: 0.5rem;
+        /* Remove padding-left */
+        /* padding-left: 500px; */
+        /* Adjust margin-right to create space between input and error message */
+        margin-right: 20px;
+        text-align: center;
+}
+
+.proceed-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 150px;
+    transition: background-color 0.3s ease;
+}
+
+.proceed-button:hover {
+    background-color: #0056b3;
+}
+
+.proceed-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    padding: 10px 20px;
+}
+
+.upi-error-message{
+    color: red;
+        font-size: 0.8rem;
+        margin-top: 0.5rem;
+        /* Remove padding-left */
+        /* padding-left: 500px; */
+        /* Adjust margin-right to create space between input and error message */
+        margin-right: 20px;
+       
+        margin-left: 470px;
+
 }
 

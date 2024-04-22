@@ -10,8 +10,13 @@ const CartItems = () => {
   const navigate = useNavigate();
 
   const handleProceedToCheckout = () => {
-  
+     const totalCartAmount = getTotalCartAmount();
+  if (totalCartAmount === 0) {
+    alert("Your cart is empty. Please add items to your cart before proceeding to payment.");
+  }
+    else{
     navigate('/payment');
+    }
   };
 
 
