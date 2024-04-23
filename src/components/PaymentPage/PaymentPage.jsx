@@ -3,7 +3,7 @@ import './PaymentPage.css';
 import phonepe from '../assets/phonepe-logo-icon.svg';
 import paytm from '../assets/paytm-icon_1.png';
 import googlepay from '../assets/google-pay-icon.webp';
-import { FaTimes } from 'react-icons/fa';
+import { FaTimes,FaMoneyBillAlt, FaAmazonPay, FaCreditCard, FaUniversity } from 'react-icons/fa';
 
 const PaymentPage = () => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
@@ -85,6 +85,7 @@ const PaymentPage = () => {
             <h2>RECOMMENDED</h2>
             <div className="payment-method">
               <div className="payment-icon">
+                 <FaMoneyBillAlt />
                 <i className="fas fa-money-bill-alt"></i>
               </div>
               <div className="payment-info">
@@ -100,6 +101,7 @@ const PaymentPage = () => {
               onClick={() => handlePaymentMethodClick("upi")}
             >
               <div className="payment-icon">
+                <FaAmazonPay />
                 <i className="fab fa-amazon-pay"></i>
               </div>
               <div className="payment-info">
@@ -178,6 +180,7 @@ const PaymentPage = () => {
               onClick={() => handlePaymentMethodClick("creditCard")}
             >
               <div className="payment-icon">
+                 <FaCreditCard />
                 <i className="fas fa-credit-card"></i>
               </div>
               <div className="payment-info">
@@ -186,11 +189,12 @@ const PaymentPage = () => {
             </div>
             
             <div className="payment-method">
-              <div className="payment-icon">
+              <div className="payment-icon" onClick={toggleNetBankingOptions}>
+                 <FaUniversity />
                 <i className="fas fa-university"></i>
               </div>
               <div className="payment-info">
-                <h3 onClick={toggleNetBankingOptions}>Net Banking</h3>
+                <h3 onClick={toggleNetBankingOptions} >Net Banking</h3>
                {showNetBankingOptions && (
                 <div className='net-banking-options'>
                 <select onChange={handleNetBankingOptionChange}>
