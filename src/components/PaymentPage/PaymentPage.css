@@ -30,13 +30,6 @@
     margin-bottom: 1rem;
 }
 
-.payment-info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
 .payment-info img {
     height: 40px;
     margin-left: 0.75rem;
@@ -71,48 +64,9 @@
     font-size: 0.875rem;
 }
 
-.promo-button {
-    width: 100%;
-    background-color: #ffd700;
-    color: #333;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
 
-.promo-button:hover {
-    background-color: #ffcc00;
-}
 
-.promo-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-}
 
-.continue-button {
-    width: 300px;
-    height: 58px;
-    background-color: #ffd700;
-    color: #333;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-weight: 400;
-    display: block;
-    margin: 100px auto;
-    margin-top: 0.5rem;
-}
-
-.continue-button:hover {
-    background-color: #ffcc00;
-}
 
 .payment-info {
     display: flex;
@@ -120,6 +74,7 @@
     justify-content: space-between;
     width: 100%;
     cursor: pointer;
+    
 }
 
 .payment-info .upi-input {
@@ -240,7 +195,13 @@
 .payment-method.net-banking .payment-info {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    
+}
+
+.payment-method.net-banking .circular-icon{
+    position : fixed;
+    width: 5px;
 }
 
 .net-banking-btn {
@@ -277,9 +238,9 @@
     padding: 8px 16px;
     border-radius: 4px;
     cursor: pointer;
-    margin-right:300px;
+    margin-right:250px;
     margin-left: auto;
-    width:150px;
+    width:120px;
     height:40px;
     
 }
@@ -316,10 +277,7 @@ width: 260px;
     font-size: 0.875rem;
     margin-top: 0.5rem;
     margin-left: 500px;
-    /* Remove this line */
-    /* Adjust margin-right to create space between input and button */
     margin-right: 20px;
-    /* Adjust this margin */
     text-align: center;
 }
 
@@ -331,9 +289,6 @@ width: 260px;
     color: red;
         font-size: 0.8rem;
         margin-top: 0.5rem;
-        /* Remove padding-left */
-        /* padding-left: 500px; */
-        /* Adjust margin-right to create space between input and error message */
         margin-right: 20px;
         text-align: center;
 }
@@ -364,16 +319,13 @@ width: 260px;
     color: red;
         font-size: 0.8rem;
         margin-top: 0.5rem;
-        /* Remove padding-left */
-        /* padding-left: 500px; */
-        /* Adjust margin-right to create space between input and error message */
         margin-right: 20px;
        
         margin-left: 470px;
 
 }
 .circular-icon {
-       width: 30px;
+    width: 30px;
         height: 30px;
         border-radius: 50%;
         background-color: white;
@@ -382,43 +334,44 @@ width: 260px;
         align-items: center;
         cursor: pointer;
         border: 2px solid black;
+        transform: translateY(-50%);     
         
 }
 
-.highlighted .circular-icon {
-    background-color: #007bff;
-    
+
+.inner-icon {
+position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 2px solid blue;
+    background-color: blue;
+    transition: background-color 0.3s ease;
+    display: none;
 }
 
-.circular-icon {
-    position: relative;
-    /* Needed for absolute positioning of the inner icon */
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: white;
-    border: 2px solid black;
+.highlighted .inner-icon {
+    display: block;
+}
+
+.circular-icon-container {
+    width: 50px;
+  
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
+    position: relative;
 }
 
-.inner-icon {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: transparent;
-    /* Initially transparent */
-    border: 2px solid blue;
-    /* Blue border */
-    transition: background-color 0.3s ease;
-    /* Smooth transition */
+.circular-icon.highlighted .inner-icon {
+    display: block;
 }
 
-.inner-icon.blue {
-    background-color: blue;
-    /* Make it blue when the 'blue' class is added */
+.circular-icon-wrapper {
+    display: flex;
+    align-items: center;
 }
-

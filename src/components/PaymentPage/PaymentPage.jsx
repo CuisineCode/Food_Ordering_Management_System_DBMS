@@ -12,30 +12,40 @@ const PaymentPage = () => {
   const [showCvvModal, setShowCvvModal] = useState(false);
   const [showNetBankingOptions, setShowNetBankingOptions] = useState(false);
   const [selectedNetBankingOption, setSelectedNetBankingOption] = useState('');
-   const [isValidUpiId, setIsValidUpiId] = useState(true);
+  const [isValidUpiId, setIsValidUpiId] = useState(true);
+  const [highlightedPaymentMethod, setHighlightedPaymentMethod] = useState(null);
+  
 
   const handlePaymentMethodClick = (method) => {
     if (selectedPaymentMethod === method) {
       setSelectedPaymentMethod(null);
+      setHighlightedPaymentMethod(null);
+      if (method === 'netBanking') {
+      setShowNetBankingOptions(false);
+    }
     } else {
       setSelectedPaymentMethod(method);
+      setHighlightedPaymentMethod(method);
       if (method === 'creditCard') {
         setShowCardDetailsModal(true);
-      }
+      }else if (method === 'netBanking') {
+        setShowNetBankingOptions(!showNetBankingOptions);
+    }
     }
   };
 
+  
+
   const handleUpiIdChange = (e) => {
     const enteredUpiId = e.target.value;
-   const isValid = /^[0-9]{10}@[a-z]{3,}$/.test(enteredUpiId);
-
+    const isValid = /^[0-9]{10}@[a-z]{3,}$/.test(enteredUpiId);
     setIsValidUpiId(isValid);
     setUpiId(enteredUpiId);
   };
 
   const handleUpiIdSubmit = (e) => {
-     e.preventDefault();
-    if (/^[0-9]{10}@[a-z]{3,}$/.test(upiId)) { // 
+    e.preventDefault();
+    if (/^[0-9]{10}@[a-z]{3,}$/.test(upiId)) {
       alert(`Payment request sent to UPI ID ${upiId}. Kindly Proceed the payment through the chosen UPI App`);
       setUpiId('');
     } else {
@@ -45,6 +55,7 @@ const PaymentPage = () => {
 
   const handleCloseCardDetailsModal = () => {
     setShowCardDetailsModal(false);
+    setHighlightedPaymentMethod(null);
   };
 
   const toggleNetBankingOptions = () => {
@@ -67,6 +78,7 @@ const PaymentPage = () => {
     if (cvv) {
       alert('Card details verified. Kindly proceed with the above payment');
       setShowCvvModal(false);
+      setHighlightedPaymentMethod(null);
     } else {
       alert('Please enter the CVV');
     }
@@ -74,6 +86,7 @@ const PaymentPage = () => {
 
   const handleCloseCvvModal = () => {
     setShowCvvModal(false);
+    setHighlightedPaymentMethod(null);
   };
 
 
@@ -86,14 +99,22 @@ const PaymentPage = () => {
             <div className="payment-method">
               <div className="payment-icon">
                  <FaMoneyBillAlt />
-                <i className="fas fa-money-bill-alt"></i>
               </div>
               <div className="payment-info">
                 <h3>Cash on Delivery/Pay on Delivery</h3>
-                <p>Cash, UPI and Cards accepted. Know more.</p>
+                
+              </div>
+              <div className="circular-icon-wrapper">
+               <div
+                className={`circular-icon ${highlightedPaymentMethod === 'cashOnDelivery' ? 'highlighted' : ''}`}
+                onClick={() => handlePaymentMethodClick('cashOnDelivery')}
+              >
+                <div className="inner-icon blue"></div>
               </div>
             </div>
           </div>
+          </div>
+          
           <div className="amazon-pay-container">
             <h2>PAYMENT METHODS</h2>
             <div
@@ -102,10 +123,10 @@ const PaymentPage = () => {
             >
               <div className="payment-icon">
                 <FaAmazonPay />
-                <i className="fab fa-amazon-pay"></i>
               </div>
               <div className="payment-info">
                 <h3>Other UPI Apps</h3>
+                
                 <div className="icon-container">
                   <img
                     src={phonepe}
@@ -123,7 +144,15 @@ const PaymentPage = () => {
                     onClick={() => handlePaymentMethodClick("googlepay")}
                   />
                 </div>
+                <div className="circular-icon-wrapper">
+                <div
+                className={`circular-icon ${highlightedPaymentMethod === 'upi' ? 'highlighted' : ''}`}
+                onClick={() => handlePaymentMethodClick('upi')}
+              >
+                <div className="inner-icon blue"></div>
               </div>
+              </div>
+            </div>
             </div>
           </div>
           <div className="payment-info">
@@ -141,8 +170,6 @@ const PaymentPage = () => {
                   {!isValidUpiId && <p className="upi-error-message">Please enter a valid UPI ID (e.g:1234567890@bankname)</p>}
                   
                 </form>
-
-                
               </div>
             )}
             {selectedPaymentMethod === "phonepe" && (
@@ -181,39 +208,55 @@ const PaymentPage = () => {
             >
               <div className="payment-icon">
                  <FaCreditCard />
-                <i className="fas fa-credit-card"></i>
               </div>
               <div className="payment-info">
                 <h3>Credit or debit card</h3>
+                <div className="circular-icon-wrapper">
+                 <div
+                className={`circular-icon ${highlightedPaymentMethod === 'creditCard' ? 'highlighted' : ''}`}
+                onClick={() => handlePaymentMethodClick('creditCard')}
+              >
+                <div className="inner-icon blue"></div>
               </div>
+              </div>
+            </div>
             </div>
             
             <div className="payment-method">
-              <div className="payment-icon" onClick={toggleNetBankingOptions}>
+              <div className="payment-icon">
                  <FaUniversity />
-                <i className="fas fa-university"></i>
               </div>
               <div className="payment-info">
-                <h3 onClick={toggleNetBankingOptions} >Net Banking</h3>
+                <h3>Net Banking</h3>
+                
+              
                {showNetBankingOptions && (
                 <div className='net-banking-options'>
-                <select onChange={handleNetBankingOptionChange}>
-                  <option>Select a option</option>
-                  <option>Airtel Payments Bank</option>
-                  <option>HDFC Bank</option>
-                  <option>State Bank of India</option>
-                  <option>Bank of Baroda</option>
-                  <option>Induslnd Bank</option>
-                </select>
-                <button className="net-banking-continue" onClick={handleContinueNetBanking}>Continue</button>
+                  <select onChange={handleNetBankingOptionChange}>
+                    <option>Select a option</option>
+                    <option>Airtel Payments Bank</option>
+                    <option>HDFC Bank</option>
+                    <option>State Bank of India</option>
+                    <option>Bank of Baroda</option>
+                    <option>Induslnd Bank</option>
+                  </select>
+                  <button className="net-banking-continue" onClick={handleContinueNetBanking}>Continue</button>
                 </div>
                )}
               </div>
+              <div className="circular-icon-container">
+                 <div className="circular-icon-wrapper">
+               <div
+                  className={`circular-icon ${highlightedPaymentMethod === 'netBanking' ? 'highlighted' : ''}`}
+                  onClick={() => handlePaymentMethodClick('netBanking')}
+                >
+                  <div className="inner-icon blue"></div>
+          </div>
+          </div>
             </div>
           </div>
-          <div className="promo-container">
-           {/* <button className="continue-button">Continue</button>*/}
           </div>
+          
         </div>
       </div>
       {showCardDetailsModal && <CardDetailsModal onClose={handleCloseCardDetailsModal} setShowCardDetailsModal={setShowCardDetailsModal} setShowCvvModal={setShowCvvModal} />}
@@ -335,7 +378,7 @@ const CvvModal = ({ onSubmit,onClose }) => {
   };
 
   const handleSubmit = () => {
-     if (/^\d{3}$/.test(cvv)) {
+    if (/^\d{3}$/.test(cvv)) {
       onSubmit(cvv);
     } else {
       setIsValidCvv(false);
