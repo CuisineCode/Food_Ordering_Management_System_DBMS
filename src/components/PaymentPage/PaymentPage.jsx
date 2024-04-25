@@ -47,6 +47,7 @@ const PaymentPage = () => {
     e.preventDefault();
     if (/^[0-9]{10}@[a-z]{3,}$/.test(upiId)) {
       alert(`Payment request sent to UPI ID ${upiId}. Kindly Proceed the payment through the chosen UPI App`);
+      setHighlightedPaymentMethod(null);
       setUpiId('');
     } else {
       alert('Invalid UPI ID');
@@ -72,6 +73,7 @@ const PaymentPage = () => {
     } else {
       alert('Please select a Net Banking option.');
     }
+    setHighlightedPaymentMethod(null);
   };
 
   const handleCvvSubmit = (cvv) => {
