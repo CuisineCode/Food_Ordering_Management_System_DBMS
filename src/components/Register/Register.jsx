@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../Register/Register.css';
 import { FaTimes } from 'react-icons/fa';
 
-const Register = ({ onClose, handleToggleLogin }) => {
+const Register = ({ onClose, handleToggleLogin, setIsLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,6 +20,7 @@ const Register = ({ onClose, handleToggleLogin }) => {
     if (!validateEmail(email)) {
       alert("Please enter a valid email address!");
       setEmail('');
+      return;
     }
 
     if (password !== confirmpassword) {
@@ -29,7 +30,9 @@ const Register = ({ onClose, handleToggleLogin }) => {
       // Perform registration logic here
       // For demonstration, let's simulate successful registration
       setTimeout(() => {
-        setRegistered(true); // Update registration status to true
+        setRegistered(true); 
+        setIsLoggedIn(true);
+        // Update registration status to true
       }, 1000);
     }
   };

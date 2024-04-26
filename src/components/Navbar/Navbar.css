@@ -1,33 +1,34 @@
-.navbar{
-    display:flex;
+.navbar {
+    display: flex;
     justify-content: space-around;
     padding: 12px;
     box-shadow: 0 1px 3px -2px black;
-   
-
 }
-.nav-logo{
-    display:flex;
+
+.nav-logo {
+    display: flex;
     align-items: center;
     size: 10px;
     gap: 10px;
 }
-.nav-logo p{
+
+.nav-logo p {
     color: #2c2a2a;
     font-size: 30px;
     font-weight: 650;
-    
 }
-.nav-menu{
+
+.nav-menu {
     display: flex;
     align-items: center;
     list-style: none;
-    gap:70px;
+    gap: 70px;
     color: #252121;
     font-size: 20px;
     font-weight: 600;
 }
-.nav-logo li{
+
+.nav-logo li {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,43 +36,110 @@
     gap: 3px;
     cursor: pointer;
 }
-.nav-menu hr{
+
+.nav-menu hr {
     border: none;
-    width:80%;
-    height:3px;
+    width: 80%;
+    height: 3px;
     border-radius: 10px;
     background: #ff4141;
 }
-.nav-login-cart{
-    display:flex;
+
+.nav-login-cart {
+    display: flex;
     align-items: center;
     gap: 45px;
 }
-.nav-login-cart button{
+
+.nav-login-cart button {
     width: 157px;
     height: 58px;
-    
-   
     border-radius: 75px;
-
     font-size: 20px;
-    font-weight:600;
-    background: #F5C1C1;
+    font-weight: 600;
+    background: #f5c1c1;
     cursor: pointer;
 }
-.nav-login-cart button:active{
+
+.nav-login-cart button:active {
     background: #f3f3f3;
 }
-.nav-cart-count{
-    width:22px;
-    height:22px;
-    display:flex;
+
+.nav-cart-count {
+    width: 22px;
+    height: 22px;
+    display: flex;
     justify-content: center;
     align-items: center;
     margin-top: -35px;
-    margin-left:-55px;
+    margin-left: -55px;
     border-radius: 11px;
     font-size: 14px;
     background: red;
     color: white;
+}
+
+.profile-icon {
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+    top: 40px;
+    right: 80px;
+    /* Adjust this value to fit your design */
+    transform: translateY(-50%);
+    margin-top: 25px;
+    margin-right: 1px;
+}
+
+.logout-overlay {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+
+    padding: 20px;
+    z-index: 2;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    width: 350px;
+    display: flex;
+    /* Added display: flex */
+    flex-direction: column;
+    /* Added flex-direction: column */
+    align-items: flex-start;
+    /* Added align-items: flex-start */
+}
+
+.logout-overlay p {
+    margin: 0 0 20px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.logout-overlay .button-container {
+    display: flex;
+    /* Added display: flex */
+}
+
+.logout-overlay button {
+    padding: 10px 15px;
+    margin-right: 10px;
+    background-color: #f5c1c1;
+    border: none;
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.logout-overlay button:hover {
+    background-color: #e0a4a4;
+}
+
+.profile-wrapper {
+    position: relative;
+    z-index: 1;
+    margin-top: 10px;
 }

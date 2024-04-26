@@ -3,12 +3,12 @@ import '../LoginPage/LoginPage.css';
 import { FaUser, FaLock, FaTimes } from 'react-icons/fa';
 
 
-const LoginPage = ({ onClose, openRegister }) => {
+const LoginPage = ({ onClose, openRegister, setIsLoggedIn }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
 
-  const handleLonginPage = async (e) => {
+  const handleLoginPage = async (e) => {
     e.preventDefault();
 
     if (!email || !password) {
@@ -22,7 +22,8 @@ const LoginPage = ({ onClose, openRegister }) => {
       // Perform registration logic here
       // For demonstration, let's simulate successful registration
       setTimeout(() => {
-        setLoggedIn(true); // Update registration status to true
+        setLoggedIn(true);
+        setIsLoggedIn(true); // Update registration status to true
       }, 1000);
     }
   };
@@ -64,7 +65,7 @@ const LoginPage = ({ onClose, openRegister }) => {
               <a href='#'>Forgot password?</a>
             </div>
 
-            <button onClick={handleLonginPage} type='submit' >Login</button>
+            <button onClick={handleLoginPage} type='submit' >Login</button>
 
             <div className='register-link'>
               <p>
