@@ -13,7 +13,7 @@ import kid_banner from './components/assets/banner_kids.png';
 import LoginPage from './components/LoginPage/LoginPage';
 import Register from './components/Register/Register';
 import { ToastContainer, toast } from 'react-toastify';
-import PaymentPage from './components/PaymentPage/PaymentPage' // Import the PaymentPage component
+import PaymentPage from './components/PaymentPage/PaymentPage' ;
 
 function App() {
   return (

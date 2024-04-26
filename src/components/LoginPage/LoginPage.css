@@ -115,5 +115,26 @@
   .close-icon:hover {
     color: #000; 
   }
+  .t2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    height: 200px; /* Adjust height as needed */
+  }
   
-    
+  .t2 h2 {
+    color: #333;
+  }
+  
+  .t2 p {
+    margin-top: 10px;
+    font-size: 16px;
+  }

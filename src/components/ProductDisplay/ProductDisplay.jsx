@@ -15,11 +15,11 @@ const ProductDisplay = (props) => {
 
     const handleAddToCart = () => {
         if (selectedSize === "") {
-            alert("Please select a size");
+            toast.error("Please select a size", { position: "top-center",autoClose:1000});
         } else {
             addToCart(product.id, selectedSize); // Pass selected size to addToCart function
             setErrorMessage(""); 
-            toast.success("Item added to cart", { position: "top-center" });
+            toast.success("Item added to cart", { position: "top-center",autoClose:1000});
         }
     };
 
