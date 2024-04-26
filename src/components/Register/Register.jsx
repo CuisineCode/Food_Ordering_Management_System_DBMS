@@ -19,7 +19,7 @@ const Register = ({ onClose, handleToggleLogin }) => {
     }
     if (!validateEmail(email)) {
       alert("Please enter a valid email address!");
-      return;
+      setEmail('');
     }
 
     if (password !== confirmpassword) {

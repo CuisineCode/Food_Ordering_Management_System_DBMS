@@ -17,7 +17,7 @@ const LoginPage = ({ onClose, openRegister }) => {
     }
     if (!validateEmail(email)) {
       alert("Please enter a valid email address!");
-      return;
+      setEmail('');
     } else {
       // Perform registration logic here
       // For demonstration, let's simulate successful registration
