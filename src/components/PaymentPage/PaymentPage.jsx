@@ -69,7 +69,7 @@ const PaymentPage = () => {
 
   const handleContinueNetBanking = () => {
     if (selectedNetBankingOption && selectedNetBankingOption !== 'Select a option') {
-      alert(`You will be securely directed to the ${selectedNetBankingOption} to enter your password and complete your purchase.`);
+      alert(`You will be securely directed to the ${selectedNetBankingOption} portal to enter your password and complete your purchase.`);
     } else {
       alert('Please select a Net Banking option.');
     }
