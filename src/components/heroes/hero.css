@@ -68,11 +68,57 @@
     flex: 1;
     display: flex;
     align-items: center;
-    justify-content: center;
-}
+    justify-content: space-around; /* Distribute the circular backgrounds evenly */
+    margin-top: 50px;
+    gap: 20px;
+  }
 
 .hero-image {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
 }
+.top-image {
+    margin-top: -650px;
+    margin-left: -400px; /* Adjust the value to position the image higher */
+  }
+
+.left-image {
+    margin-left: -500px;
+    margin-top:-70px ; /* Adjust the value to position the image higher */
+  }
+
+.right-image{
+    margin-bottom: -250px;
+    margin-right: -500px; /* Adjust the value to position the image higher */
+}
+
+.circular-background {
+    width: 300px; /* Adjust the size as per your requirement */
+    height: 300px;
+    border-radius: 50%;
+    background-color:#f9caca;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .guy-image {
+    width: 300px; /* Adjust the size as per your requirement */
+    height: 300px;
+    object-fit: contain;
+    position: absolute; /* Position the image within the circular background */
+  }
+  .girl-image {
+    width: 550px; /* Adjust the size as per your requirement */
+    height: 550px;
+    object-fit: contain;
+    position: absolute; /* Position the image within the circular background */
+  }
+  .kids-image {
+    width: 450px; /* Adjust the size as per your requirement */
+    height: 450px;
+    margin-top: 80px;
+    object-fit:contain;
+    position: absolute; /* Position the image within the circular background */
+  }
