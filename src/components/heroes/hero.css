@@ -79,18 +79,19 @@
     object-fit: contain;
 }
 .top-image {
-    margin-top: -650px;
-    margin-left: -400px; /* Adjust the value to position the image higher */
+    margin-top: -550px;
+    margin-left: -400px; 
+    /* Adjust the value to position the image higher */
   }
 
 .left-image {
-    margin-left: -500px;
-    margin-top:-70px ; /* Adjust the value to position the image higher */
+    margin-left: -550px;
+    margin-top:-100px ; /* Adjust the value to position the image higher */
   }
 
 .right-image{
-    margin-bottom: -250px;
-    margin-right: -500px; /* Adjust the value to position the image higher */
+    margin-bottom: -150px;
+    margin-right: -400px; /* Adjust the value to position the image higher */
 }
 
 .circular-background {
