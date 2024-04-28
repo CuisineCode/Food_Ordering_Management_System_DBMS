@@ -8,12 +8,13 @@ const Register = ({ onClose, handleToggleLogin, setIsLoggedIn }) => {
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
   const [address, setAddress] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState(""); // New state for phone number
   const [registered, setRegistered] = useState(false); // State to track registration status
 
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    if (!username || !email || !password || !confirmpassword || !address) {
+    if (!username || !email || !password || !confirmpassword || !address || !phoneNumber) { // Check if phone number is not empty
       alert("Please fill in all fields!");
       return;
     }
@@ -26,7 +27,12 @@ const Register = ({ onClose, handleToggleLogin, setIsLoggedIn }) => {
     if (password !== confirmpassword) {
       alert("Passwords do not match!", { position: "top-center", autoClose: 1000 });
       setConfirmPassword('');
-    } else {
+    } 
+    if (phoneNumber.length !== 10) {
+      alert("Please enter a valid 10-digit phone number!");
+      setPhoneNumber('');
+      return;
+    }else {
       // Perform registration logic here
       // For demonstration, let's simulate successful registration
       setTimeout(() => {
@@ -70,6 +76,9 @@ const Register = ({ onClose, handleToggleLogin, setIsLoggedIn }) => {
             </div>
             <div className='input-box'>
               <input type='text' placeholder='Address' required value={address} onChange={(event) => { setAddress(event.target.value) }} />
+            </div>
+            <div className='input-box'>
+              <input type='tel' placeholder='Phone Number' required value={phoneNumber} onChange={(event) => { setPhoneNumber(event.target.value) }} />
             </div>
             <button onClick={handleRegister} type='submit'>Register</button>
             <div className='register-link'>

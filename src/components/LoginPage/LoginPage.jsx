@@ -4,21 +4,18 @@ import { FaUser, FaLock, FaTimes } from 'react-icons/fa';
 
 
 const LoginPage = ({ onClose, openRegister, setIsLoggedIn }) => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
 
   const handleLoginPage = async (e) => {
     e.preventDefault();
 
-    if (!email || !password) {
+    if (!username || !password) {
       alert("Please fill in all fields!");
       return;
     }
-    if (!validateEmail(email)) {
-      alert("Please enter a valid email address!");
-      setEmail('');
-    } else {
+     else {
       // Perform registration logic here
       // For demonstration, let's simulate successful registration
       setTimeout(() => {
@@ -28,11 +25,7 @@ const LoginPage = ({ onClose, openRegister, setIsLoggedIn }) => {
     }
   };
 
-  const validateEmail = (email) => {
-    // Email validation regex pattern
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailPattern.test(email);
-  };
+ 
   const handleOverlayClick = (e) => {
     if (e.target.classList.contains('modal-overlay')) {
       onClose();
@@ -49,7 +42,7 @@ const LoginPage = ({ onClose, openRegister, setIsLoggedIn }) => {
             <h1>Login</h1>
             <div className='input-box'>
 
-              <input type='email' placeholder='E-mail' required value={email} onChange={(event) => { setEmail(event.target.value) }} />
+              <input type='text' placeholder='Username' required value={username} onChange={(event) => { setUsername(event.target.value) }} />
               <FaUser className='icon' />
             </div>
 
