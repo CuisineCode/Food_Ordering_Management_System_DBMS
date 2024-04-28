@@ -81,7 +81,7 @@ const Register = ({ onClose, handleToggleLogin, setIsLoggedIn }) => {
         ) : (
           <div className='t3'>
             <h1>You registered successfully!</h1>
-            {/* Add any content or redirection logic here */}
+        
           </div>
         )}
       </div>

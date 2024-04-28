@@ -5,6 +5,7 @@ import paytm from '../assets/paytm-icon_1.png';
 import googlepay from '../assets/google-pay-icon.webp';
 import { FaTimes,FaMoneyBillAlt, FaAmazonPay, FaCreditCard, FaUniversity } from 'react-icons/fa';
 
+/* State control variables for various functionalities */
 const PaymentPage = () => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
   const [upiId, setUpiId] = useState('');
@@ -14,35 +15,42 @@ const PaymentPage = () => {
   const [selectedNetBankingOption, setSelectedNetBankingOption] = useState('');
   const [isValidUpiId, setIsValidUpiId] = useState(true);
   const [highlightedPaymentMethod, setHighlightedPaymentMethod] = useState(null);
-  
+   const [showCodOverlay, setShowCodOverlay] = useState(false);
 
   const handlePaymentMethodClick = (method) => {
-    if (selectedPaymentMethod === method) {
-      setSelectedPaymentMethod(null);
-      setHighlightedPaymentMethod(null);
-      if (method === 'netBanking') {
+  if (selectedPaymentMethod === method) {
+    setSelectedPaymentMethod(null);
+    setHighlightedPaymentMethod(null);
+    if (method === 'netBanking') {
       setShowNetBankingOptions(false);
+    } else if (method === 'cashOnDelivery') {
+      setShowCodOverlay(false);
+       // Reset showCodOverlay to false when deselecting Cash on Delivery
     }
-    } else {
-      setSelectedPaymentMethod(method);
-      setHighlightedPaymentMethod(method);
-      if (method === 'creditCard') {
-        setShowCardDetailsModal(true);
-      }else if (method === 'netBanking') {
-        setShowNetBankingOptions(!showNetBankingOptions);
+  } else {
+    setSelectedPaymentMethod(method);
+    setHighlightedPaymentMethod(method);
+    if (method === 'creditCard') {
+      setShowCardDetailsModal(true);
+    } else if (method === 'netBanking') {
+      setShowNetBankingOptions(!showNetBankingOptions);
+    } else if (method === 'cashOnDelivery') {
+      setShowCodOverlay(true);
+      // Set showCodOverlay to true when selecting Cash on Delivery
     }
-    }
-  };
+  }
+}
 
   
-
+  /*UPI ID type checking*/ 
   const handleUpiIdChange = (e) => {
     const enteredUpiId = e.target.value;
     const isValid = /^[0-9]{10}@[a-z]{3,}$/.test(enteredUpiId);
     setIsValidUpiId(isValid);
     setUpiId(enteredUpiId);
   };
-
+  
+  /*Successful Submission of UPI ID */
   const handleUpiIdSubmit = (e) => {
     e.preventDefault();
     if (/^[0-9]{10}@[a-z]{3,}$/.test(upiId)) {
@@ -53,7 +61,8 @@ const PaymentPage = () => {
       alert('Invalid UPI ID');
     }
   };
-
+  
+  /*Conditional displaying of  credit/debit card overlay */
   const handleCloseCardDetailsModal = () => {
     setShowCardDetailsModal(false);
     setHighlightedPaymentMethod(null);
@@ -62,11 +71,13 @@ const PaymentPage = () => {
   const toggleNetBankingOptions = () => {
     setShowNetBankingOptions(!showNetBankingOptions);
   };
-
+  
+  /*Selection of net Banking option */
   const handleNetBankingOptionChange = (e) => {
     setSelectedNetBankingOption(e.target.value);
   };
 
+   /*Successful alert message for net banking */
   const handleContinueNetBanking = () => {
     if (selectedNetBankingOption && selectedNetBankingOption !== 'Select a option') {
       alert(`You will be securely directed to the ${selectedNetBankingOption} portal to enter your password and complete your purchase.`);
@@ -76,6 +87,7 @@ const PaymentPage = () => {
    
   };
 
+  /*Handling successful CVV Submit for Credit/Debit Card */
   const handleCvvSubmit = (cvv) => {
     if (cvv) {
       alert('Card details verified. Kindly proceed with the above payment');
@@ -86,6 +98,7 @@ const PaymentPage = () => {
     }
   };
 
+  /*Closing of CVV Overlay */
   const handleCloseCvvModal = () => {
     setShowCvvModal(false);
     setHighlightedPaymentMethod(null);
@@ -96,15 +109,33 @@ const PaymentPage = () => {
     <div className="payment-page-container">
       <div className="payment-page">
         <div className="payment-container">
+
           <div className="recommended-container">
+          {/* Recommended Section for Cash on Delivery Logic */}
             <h2>RECOMMENDED</h2>
             <div className="payment-method">
               <div className="payment-icon">
+
+                {/*Below represents COD icon */}
                  <FaMoneyBillAlt />
               </div>
               <div className="payment-info">
                 <h3>Cash on Delivery/Pay on Delivery</h3>
-                
+                   {showCodOverlay && (
+        <div className="cod-overlay">
+          <div className="cod-overlay-content">
+            <FaTimes
+  className="close-icon-1"
+  onClick={() => {
+    setShowCodOverlay(false);
+    handlePaymentMethodClick('cashOnDelivery');
+  }}
+/>
+            <h2>Cash on Delivery Selected</h2>
+            <p>Your order will be shipped to your registered address where you can pay by Cash/Card/UPI etc</p>
+          </div>
+        </div>
+                   )}
               </div>
               <div className="circular-icon-wrapper">
                <div
@@ -116,7 +147,8 @@ const PaymentPage = () => {
             </div>
           </div>
           </div>
-          
+
+          {/* Payment Method section for UPI ID submission Logic */}
           <div className="amazon-pay-container">
             <h2>PAYMENT METHODS</h2>
             <div
@@ -124,6 +156,8 @@ const PaymentPage = () => {
               onClick={() => handlePaymentMethodClick("upi")}
             >
               <div className="payment-icon">
+
+                {/*Below Represents Pay Icon*/}
                 <FaAmazonPay />
               </div>
               <div className="payment-info">
@@ -202,6 +236,8 @@ const PaymentPage = () => {
               </div>
             )}
           </div>
+
+          {/* More Ways to Pay Section for Credit Card/Debit Card Payment options*/}
           <div className="other-payment-container">
             <h2>MORE WAYS TO PAY</h2>
             <div
@@ -209,6 +245,8 @@ const PaymentPage = () => {
               onClick={() => handlePaymentMethodClick("creditCard")}
             >
               <div className="payment-icon">
+
+                {/*Credit Card Icon below*/}
                  <FaCreditCard />
               </div>
               <div className="payment-info">
@@ -223,15 +261,16 @@ const PaymentPage = () => {
               </div>
             </div>
             </div>
-            
+
+            {/*Net Banking Payment Method */}
             <div className="payment-method">
               <div className="payment-icon">
+                {/* Net Banking Icon*/}
                  <FaUniversity />
               </div>
               <div className="payment-info">
                 <h3>Net Banking</h3>
                 
-              
                {showNetBankingOptions && (
                 <div className='net-banking-options'>
                   <select onChange={handleNetBankingOptionChange}>
@@ -261,6 +300,8 @@ const PaymentPage = () => {
           
         </div>
       </div>
+
+      {/* Handling the overlay displays of credit card and cvv methods */}
       {showCardDetailsModal && <CardDetailsModal onClose={handleCloseCardDetailsModal} setShowCardDetailsModal={setShowCardDetailsModal} setShowCvvModal={setShowCvvModal} />}
       {showCvvModal && <CvvModal onSubmit={handleCvvSubmit} onClose={handleCloseCvvModal} />}
     </div>
@@ -290,6 +331,7 @@ const CardDetailsModal = ({ onClose, setShowCardDetailsModal, setShowCvvModal })
     }));
   };
 
+  /*Card details User Input Logic */ 
   const handleEnterCardDetails = () => {
     if (cardDetails.name === '' || cardDetails.number === '' || cardDetails.expiryMonth === '' || cardDetails.expiryYear === '') {
       alert('All fields are required.');
@@ -302,6 +344,7 @@ const CardDetailsModal = ({ onClose, setShowCardDetailsModal, setShowCvvModal })
     }
   };
 
+  /* Display of the Credit Card Overlay */
   return (
     <div className="modal-overlay">
       <div className="modal-content">
@@ -368,6 +411,7 @@ const CardDetailsModal = ({ onClose, setShowCardDetailsModal, setShowCvvModal })
   );
 };
 
+/* Defining CVV Validation Logic */
 const CvvModal = ({ onSubmit,onClose }) => {
   const [cvv, setCvv] = useState('');
   const [isValidCvv, setIsValidCvv] = useState(true);
@@ -387,6 +431,7 @@ const CvvModal = ({ onSubmit,onClose }) => {
     }
   };
 
+  /* CVV Overlay display */
   return (
     <div className="modal-overlay">
       <div className="modal-content">
