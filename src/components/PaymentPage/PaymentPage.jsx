@@ -15,7 +15,12 @@ const PaymentPage = () => {
   const [selectedNetBankingOption, setSelectedNetBankingOption] = useState('');
   const [isValidUpiId, setIsValidUpiId] = useState(true);
   const [highlightedPaymentMethod, setHighlightedPaymentMethod] = useState(null);
-   const [showCodOverlay, setShowCodOverlay] = useState(false);
+  const [showCodOverlay, setShowCodOverlay] = useState(false);   
+  const [showUpiSuccessOverlay, setShowUpiSuccessOverlay] = useState(false);
+  const [showCardDetailsSuccessOverlay, setShowCardDetailsSuccessOverlay] = useState(false);
+  const [showNetBankingSuccessOverlay, setShowNetBankingSuccessOverlay] = useState(false);
+   const [upiInputPlaceholder, setUpiInputPlaceholder] = useState('Enter UPI ID');
+
 
   const handlePaymentMethodClick = (method) => {
   if (selectedPaymentMethod === method) {
@@ -37,11 +42,18 @@ const PaymentPage = () => {
     } else if (method === 'cashOnDelivery') {
       setShowCodOverlay(true);
       // Set showCodOverlay to true when selecting Cash on Delivery
-    }
+    }else if (['phonepe', 'paytm', 'googlepay'].includes(method)) {
+        setUpiId('');
+        setIsValidUpiId(true);
+        setUpiInputPlaceholder(`Enter ${method === 'phonepe' ? 'PhonePe' : method === 'paytm' ? 'Paytm' : 'Google Pay'} UPI ID`);
+      }
+   
+     
+    
   }
-}
+};
 
-  
+
   /*UPI ID type checking*/ 
   const handleUpiIdChange = (e) => {
     const enteredUpiId = e.target.value;
@@ -54,13 +66,18 @@ const PaymentPage = () => {
   const handleUpiIdSubmit = (e) => {
     e.preventDefault();
     if (/^[0-9]{10}@[a-z]{3,}$/.test(upiId)) {
-      alert(`Payment request sent to UPI ID ${upiId}. Kindly Proceed the payment through the chosen UPI App`);
-     
+     setShowUpiSuccessOverlay(true);     
       setUpiId('');
     } else {
       alert('Invalid UPI ID');
     }
   };
+
+  const handleCloseUpiSuccessOverlay = () => {
+    setShowUpiSuccessOverlay(false);
+  };
+
+  
   
   /*Conditional displaying of  credit/debit card overlay */
   const handleCloseCardDetailsModal = () => {
@@ -68,10 +85,8 @@ const PaymentPage = () => {
     setHighlightedPaymentMethod(null);
   };
 
-  const toggleNetBankingOptions = () => {
-    setShowNetBankingOptions(!showNetBankingOptions);
-  };
   
+
   /*Selection of net Banking option */
   const handleNetBankingOptionChange = (e) => {
     setSelectedNetBankingOption(e.target.value);
@@ -80,17 +95,22 @@ const PaymentPage = () => {
    /*Successful alert message for net banking */
   const handleContinueNetBanking = () => {
     if (selectedNetBankingOption && selectedNetBankingOption !== 'Select a option') {
-      alert(`You will be securely directed to the ${selectedNetBankingOption} portal to enter your password and complete your purchase.`);
+    setShowNetBankingSuccessOverlay(true);
     } else {
       alert('Please select a Net Banking option.');
     }
    
   };
 
+  const handleCloseNetBankingSuccessOverlay = () => {
+    setShowNetBankingSuccessOverlay(false);
+    setHighlightedPaymentMethod(null);
+  };
+
   /*Handling successful CVV Submit for Credit/Debit Card */
   const handleCvvSubmit = (cvv) => {
     if (cvv) {
-      alert('Card details verified. Kindly proceed with the above payment');
+      setShowCardDetailsSuccessOverlay(true);
       setShowCvvModal(false);
       setHighlightedPaymentMethod(null);
     } else {
@@ -101,8 +121,13 @@ const PaymentPage = () => {
   /*Closing of CVV Overlay */
   const handleCloseCvvModal = () => {
     setShowCvvModal(false);
-    setHighlightedPaymentMethod(null);
+    //setHighlightedPaymentMethod(null);
   };
+
+  const handleCloseCardDetailsSuccessOverlay = () => {
+    setShowCardDetailsSuccessOverlay(false);
+   
+  };  
 
 
   return (
@@ -192,50 +217,34 @@ const PaymentPage = () => {
             </div>
           </div>
           <div className="payment-info">
-            {selectedPaymentMethod === "upi" && (
+  {(selectedPaymentMethod === "upi" || selectedPaymentMethod === "phonepe" || selectedPaymentMethod === "paytm" || selectedPaymentMethod === "googlepay") && (
               <div>
                 <form onSubmit={handleUpiIdSubmit}>
                   <input
                     type="text"
-                    placeholder="Enter UPI ID"
+                    placeholder={upiInputPlaceholder}
                     className={`upi-input ${isValidUpiId ? '' : 'invalid-input'}`}
                     value={upiId}
                     onChange={handleUpiIdChange}
                   />
-                  <button className="proceed-button" onClick={handleUpiIdSubmit} disabled={!isValidUpiId}>Proceed</button>
-                  {!isValidUpiId && <p className="upi-error-message">Please enter a valid UPI ID (e.g:1234567890@bankname)</p>}
-                  
-                </form>
-              </div>
-            )}
-            {selectedPaymentMethod === "phonepe" && (
-              <div>
-                <input
-                  type="text"
-                  placeholder="Enter PhonePe UPI ID"
-                  className="upi-input"
-                />
-              </div>
-            )}
-            {selectedPaymentMethod === "paytm" && (
-              <div>
-                <input
-                  type="text"
-                  placeholder="Enter Paytm UPI ID"
-                  className="upi-input"
-                />
-              </div>
-            )}
-            {selectedPaymentMethod === "googlepay" && (
-              <div>
-                <input
-                  type="text"
-                  placeholder="Enter Google Pay UPI ID"
-                  className="upi-input"
-                />
-              </div>
-            )}
-          </div>
+        <button
+          className="proceed-button"
+          onClick={handleUpiIdSubmit}
+          disabled={!isValidUpiId}
+        >
+          Proceed
+        </button>
+        {!isValidUpiId && (
+          <p className="upi-error-message">
+            Please enter a valid UPI ID (e.g:1234567890@bankname)
+          </p>
+        )}
+      </form>
+    </div>
+  )}
+ 
+</div>
+          
 
           {/* More Ways to Pay Section for Credit Card/Debit Card Payment options*/}
           <div className="other-payment-container">
@@ -302,11 +311,69 @@ const PaymentPage = () => {
       </div>
 
       {/* Handling the overlay displays of credit card and cvv methods */}
-      {showCardDetailsModal && <CardDetailsModal onClose={handleCloseCardDetailsModal} setShowCardDetailsModal={setShowCardDetailsModal} setShowCvvModal={setShowCvvModal} />}
+      {showCardDetailsModal && <CardDetailsModal onClose={handleCloseCardDetailsModal} setShowCardDetailsModal={setShowCardDetailsModal} setShowCvvModal={setShowCvvModal}  />}
       {showCvvModal && <CvvModal onSubmit={handleCvvSubmit} onClose={handleCloseCvvModal} />}
+      {showUpiSuccessOverlay && (
+        <UpiSuccessOverlay onClose={handleCloseUpiSuccessOverlay}  selectedPaymentMethod={selectedPaymentMethod}  />
+      )}
+      {showCardDetailsSuccessOverlay && (
+        <CardDetailsSuccessOverlay onClose={handleCloseCardDetailsSuccessOverlay} />
+      )}
+      {showNetBankingSuccessOverlay && (
+        <NetBankingSuccessOverlay
+          onClose={handleCloseNetBankingSuccessOverlay}
+          selectedNetBankingOption={selectedNetBankingOption}
+        />
+      )}
     </div>
   );
 };
+
+const UpiSuccessOverlay = ({ onClose,selectedPaymentMethod }) => {
+ let paymentMethodName;
+  if (selectedPaymentMethod === 'phonepe') {
+    paymentMethodName = 'PhonePe';
+  } else if (selectedPaymentMethod === 'paytm') {
+    paymentMethodName = 'Paytm';
+  } else if (selectedPaymentMethod === 'googlepay') {
+    paymentMethodName = 'Google Pay';
+  }
+  return (
+    <div className="modal-overlay">
+      <div className="modal-content">
+        <FaTimes className="close-icon-2" onClick={onClose} />
+        <h2>UPI ID Verified</h2>
+        <p>Kindly proceed the payment through the chosen UPI App {paymentMethodName}    
+        </p>
+      </div>
+    </div>
+  );
+};
+
+const CardDetailsSuccessOverlay = ({ onClose }) => {
+  return (
+    <div className="modal-overlay">
+      <div className="modal-content">
+        <FaTimes className="close-icon-3" onClick={onClose} />
+        <h2>Card Details Verified</h2>
+        <p>Kindly proceed with the above payment</p>
+      </div>
+    </div>
+  );
+};
+
+const NetBankingSuccessOverlay = ({ onClose, selectedNetBankingOption }) => {
+  return (
+    <div className="modal-overlay">
+      <div className="modal-content">
+        <FaTimes className="close-icon-4" onClick={onClose} />
+        <h2>Net Banking Selected</h2>
+        <p>You will be securely directed to the {selectedNetBankingOption} portal to enter your password and complete your purchase.</p>
+      </div>
+    </div>
+  );
+};
+
 
 const CardDetailsModal = ({ onClose, setShowCardDetailsModal, setShowCvvModal }) => {
   const [cardDetails, setCardDetails] = useState({
