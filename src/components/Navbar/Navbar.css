@@ -1,8 +1,9 @@
 .navbar {
     display: flex;
     justify-content: space-around;
-    padding: 12px;
+    padding: 8px;
     box-shadow: 0 1px 3px -2px black;
+    
 }
 
 .nav-logo {
@@ -52,12 +53,12 @@
 }
 
 .nav-login-cart button {
-    width: 157px;
-    height: 58px;
+    width: 150px;
+    height: 50px;
     border-radius: 75px;
     font-size: 20px;
-    font-weight: 600;
-    background: #f5c1c1;
+    font-weight: 700;
+    background: #bbabab;
     cursor: pointer;
 }
 

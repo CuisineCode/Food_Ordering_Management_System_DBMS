@@ -1,7 +1,7 @@
 .hero {
     height: 100vh;
     width: 100vw;
-    background: linear-gradient(180deg, #fee2e2 0%, #e1ffea22 60%);
+    background: linear-gradient(180deg, #b89f9f 0%, #e1ffea22 60%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -79,26 +79,26 @@
     object-fit: contain;
 }
 .top-image {
-    margin-top: -550px;
+    margin-top: -480px;
     margin-left: -280px; 
     /* Adjust the value to position the image higher */
   }
 
 .left-image {
-    margin-left: -400px;
-    margin-top:-200px ; /* Adjust the value to position the image higher */
+    margin-left: -420px;
+    margin-top:-205px ; /* Adjust the value to position the image higher */
   }
 
 .right-image{
-    margin-bottom: -150px;
-    margin-right: -600px; /* Adjust the value to position the image higher */
+    margin-bottom: -190px;
+    margin-right: -420px; /* Adjust the value to position the image higher */
 }
 
 .circular-background {
     width: 300px; /* Adjust the size as per your requirement */
     height: 300px;
     border-radius: 50%;
-    background-color:#f9caca;
+    background-color:#bbabab;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -107,6 +107,8 @@
   .guy-image {
     width: 300px; /* Adjust the size as per your requirement */
     height: 300px;
+    margin-right: 30px;
+    margin-top: 12px;
     object-fit: contain;
     position: absolute; /* Position the image within the circular background */
   }
@@ -119,7 +121,8 @@
   .kids-image {
     width: 450px; /* Adjust the size as per your requirement */
     height: 450px;
-    margin-top: 80px;
+     margin-top: 110px;
+    margin-right: 30px;
     object-fit:contain;
     position: absolute; /* Position the image within the circular background */
   }

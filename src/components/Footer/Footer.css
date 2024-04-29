@@ -8,8 +8,8 @@
 .footer-logo{
     display: flex;
     align-items: center;
-    gap:20px;
-    size:10px;
+    gap:10px;
+    size:8px;
 }
 .footer-logo p{
     color:#383838;

@@ -1,6 +1,6 @@
 import React, { useContext, useState, useCallback, useEffect } from 'react';
 import './Navbar.css';
-import logo from '../assets/l2.png';
+import logo from '../assets/l3.png';
 import cartIcon from '../assets/cart_icon.png';
 import { Link } from 'react-router-dom';
 import LoginPage from '../LoginPage/LoginPage';
@@ -63,7 +63,7 @@ const Navbar = () => {
     <div className='navbar'>
       <div className="nav-logo">
         <img src={logo} alt="" />
-        <p>Shopper's Hub</p>
+        <p>Shoppers Hub</p>
       </div>
       <ul className="nav-menu">
         <li onClick={() => { setMenu("shop") }}><Link style={{ textDecoration: 'none' }} to='/'>Shop</Link>{menu === "shop" ? <hr /> : <></>}</li>
