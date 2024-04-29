@@ -1,6 +1,6 @@
 import React, { useContext, useState, useCallback, useEffect } from 'react';
 import './Navbar.css';
-import logo from '../assets/logo.png';
+import logo from '../assets/l2.png';
 import cartIcon from '../assets/cart_icon.png';
 import { Link } from 'react-router-dom';
 import LoginPage from '../LoginPage/LoginPage';
