@@ -112,9 +112,6 @@ const DescriptionBox = () => {
                 required
               ></textarea>
               <button className="review-button submit-button" type="submit">Submit Review</button>
-              <button className="review-button" onClick={clearReviews}>
-                Clear Reviews
-              </button>
             </form>
             {reviews.map((review, index) => (
               <div key={index} className="review-item">
