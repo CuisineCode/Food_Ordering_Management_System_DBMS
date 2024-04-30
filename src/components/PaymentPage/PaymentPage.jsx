@@ -9,7 +9,7 @@ import { FaTimes,FaMoneyBillAlt, FaAmazonPay, FaCreditCard, FaUniversity } from 
 const PaymentPage = () => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
   const [upiId, setUpiId] = useState('');
-  const [showCardDetailsModal, setShowCardDetailsModal] = useState(false);
+  const [showCardDetailsModal, setShowCardDetailsModal] = useState(false); 
   const [showCvvModal, setShowCvvModal] = useState(false);
   const [showNetBankingOptions, setShowNetBankingOptions] = useState(false);
   const [selectedNetBankingOption, setSelectedNetBankingOption] = useState('');
@@ -480,7 +480,7 @@ const CardDetailsModal = ({ onClose, setShowCardDetailsModal, setShowCvvModal })
 
 /* Defining CVV Validation Logic */
 const CvvModal = ({ onSubmit,onClose }) => {
-  const [cvv, setCvv] = useState('');
+  const  [cvv, setCvv] = useState('');
   const [isValidCvv, setIsValidCvv] = useState(true);
 
   const handleCvvChange = (e) => {
@@ -518,4 +518,4 @@ const CvvModal = ({ onSubmit,onClose }) => {
   );
 };
 
-export default PaymentPage;
+export default PaymentPage; 
