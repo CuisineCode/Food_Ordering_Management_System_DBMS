@@ -356,7 +356,7 @@ const CardDetailsSuccessOverlay = ({ onClose }) => {
       <div className="modal-content">
         <FaTimes className="close-icon-3" onClick={onClose} />
         <h2>Card Details Verified</h2>
-        <p>Kindly proceed with the above payment</p>
+        <p>Kindly proceed with the payment</p>
       </div>
     </div>
   );

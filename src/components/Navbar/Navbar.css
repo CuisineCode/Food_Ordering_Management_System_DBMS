@@ -126,7 +126,7 @@
 .logout-overlay button {
     padding: 10px 15px;
     margin-right: 10px;
-    background-color: #f5c1c1;
+    background-color: #bbabab;
     border: none;
     color: #333;
     font-size: 14px;
@@ -136,7 +136,7 @@
 }
 
 .logout-overlay button:hover {
-    background-color: #e0a4a4;
+    background-color: #cfbcbc;
 }
 
 .profile-wrapper {
