@@ -25,8 +25,9 @@ const Register = ({ onClose, handleToggleLogin, setIsLoggedIn }) => {
     }
 
     if (password !== confirmpassword) {
-      alert("Passwords do not match!", { position: "top-center", autoClose: 1000 });
+      alert("Passwords do not match!");
       setConfirmPassword('');
+      return;
     } 
     if (phoneNumber.length !== 10) {
       alert("Please enter a valid 10-digit phone number!");
