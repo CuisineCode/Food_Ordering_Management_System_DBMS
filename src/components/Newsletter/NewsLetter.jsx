@@ -48,10 +48,12 @@ const NewsLetter = () => {
             <span className="close-btn" onClick={handleOverlayClose}>
               &times;
             </span>
-            <p>
-              Subscribed newsletter successfully. You will receive regular
-              updates on exclusive offers in your mail.
-            </p>
+            
+              <h2> Thanks for Subscribing! </h2>
+              <br />
+              <p>You will receive regular
+              updates on exclusive offers in your mail. Stay Tuned! </p> <br />
+            
           </div>
         </div>
       )}

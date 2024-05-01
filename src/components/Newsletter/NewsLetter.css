@@ -103,3 +103,7 @@
     color: #888;
 }
 
+.overlay-content h2 {
+    margin-top: 0;
+    color: #333;
+}
