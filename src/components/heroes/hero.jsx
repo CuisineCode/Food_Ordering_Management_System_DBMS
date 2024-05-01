@@ -1,6 +1,4 @@
 import React from "react";
-import hand_icon from '../assets/hand_icon.png';
-import hero_image from '../assets/hero_image.png';
 import boy_removebg_preview from '../assets/boy_removebg_preview.png';
 import girl_removebg_preview from '../assets/girl_removebg_preview.png';
 import kids_removebg_preview from '../assets/kids_removebg_preview.png';

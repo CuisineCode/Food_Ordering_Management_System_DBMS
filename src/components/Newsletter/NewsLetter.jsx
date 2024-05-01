@@ -19,6 +19,8 @@ const NewsLetter = () => {
     } else {
       // Invalid email
       alert("Please enter a valid email address.");
+      setEmail('');
+      return;
     }
   };
 
