@@ -53,9 +53,9 @@ const LoginPage = ({ onClose, openRegister, setIsLoggedIn }) => {
 
             <div className='forgot-password'>
               <label>
-                <input type='checkbox' /> Remember me
+                {/*<input type='checkbox' /> Remember me*/}
               </label>
-              <a href='#'>Forgot password?</a>
+             {/* <a href='#'>Forgot password?</a>*/}
             </div>
 
             <button onClick={handleLoginPage} type='submit' >Login</button>
