@@ -1,4 +1,3 @@
-4th semester vecproject
 
 # Getting Started with Create React App
 
