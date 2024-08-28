@@ -2,7 +2,7 @@ import React from "react";
 import Hero from "../components/heroes/hero";
 
 
-import NewsLetter from "../components/Newsletter/NewsLetter";
+
 
 
 const Shop = () =>{
@@ -13,7 +13,7 @@ const Shop = () =>{
  
     <Hero />
 
-    <NewsLetter />
+    
     
     
 

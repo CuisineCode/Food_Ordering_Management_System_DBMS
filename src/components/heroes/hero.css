@@ -1,128 +1,101 @@
+/* PC (Desktop) Version */
 .hero {
-    height: 100vh;
-    width: 100vw;
-    background: linear-gradient(180deg, #b89f9f 0%, #e1ffea22 60%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
-.hero-left {
-    flex: 1;
-    display: flex;
+.food-box {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 350px; /* Width for desktop */
+  height: 200px; /* Height for desktop */
+  padding: 15px; /* Adjust padding if needed */
+  margin: 20px;
+  text-align: left; /* Align text to the left */
+  display: flex;
+  align-items: center;
+}
+
+.food-image {
+  width: 80px; /* Set a fixed width for the image */
+  height: 80px; /* Set a fixed height for the image */
+  border-radius: 50%; /* Make the image circular */
+  object-fit: cover; /* Ensure the image covers the circle without distortion */
+  margin-right: 15px; /* Add some space between the image and the details */
+  border: 2px solid #ddd; /* Optional: add a border around the image for better visibility */
+}
+
+.food-details h3 {
+  font-size: 1.1rem;
+  margin: 0 0 10px 0;
+}
+
+.food-details p {
+  color: #555;
+  font-size: 0.9rem;
+  margin: 5px 0;
+}
+
+.food-price {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.add-item-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 15px; /* Adjust the button size */
+  font-size: 0.9rem; /* Adjust font size */
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-item-button:hover {
+  background-color: #45a049;
+}
+
+/* Mobile Version */
+@media (max-width: 768px) {
+  .hero {
     flex-direction: column;
+    align-items: center;
+  }
+
+  .food-box {
+    width: 50%; /* Adjust the width for mobile */
+    height: auto; /* Allow height to be dynamic */
+    padding: 10px; /* Reduce padding for mobile */
+    margin-left: auto;
+    margin-right: 120px; /* Adjust margin for mobile */
+    flex-direction: column; 
     justify-content: center;
-    gap: 20px;
-    padding: 180px;
-    line-height: 1.1;
-}
-
-.hero-left h2 {
-    color: #090909;
-    font-size: 36px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.hero-left p {
-    color: #171717;
-    font-size: 120px;
-    font-weight: 900;
-    text-transform: uppercase;
-    line-height: 0.9;
-}
-
-.hero-hand-icon {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.hero-hand-icon img {
-    width: 120px;
-}
-
-.hero-latest-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    width: 310px;
-    height: 70px;
-    border-radius: 75px;
-    margin-top: 30px;
-    background: #ff4141;
-    color: white;
-    font-size: 22px;
-    font-weight: 500;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
-
-.hero-latest-btn:hover {
-    background-color: #d63030;
-}
-
-.hero-right {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: space-around; /* Distribute the circular backgrounds evenly */
-    margin-top: 50px;
-    gap: 20px;
+    align-items: center;/* Stack the content vertically */
+    text-align: center; /* Center-align the text */
   }
 
-.hero-image {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
+  .food-image {
+    margin-right: 0; /* Remove the margin on the right */
+    margin-bottom: 10px; /* Add margin at the bottom for spacing */
+    width: 70px; /* Adjust the width for mobile */
+    height: 70px; /* Adjust the height for mobile */
+  }
+
+  .food-details h3 {
+    font-size: 1rem; /* Reduce the font size for mobile */
+    margin: 5px 0; /* Adjust the margin for mobile */
+  }
+
+  .food-details p {
+    font-size: 0.85rem; /* Adjust the font size for mobile */
+  }
+
+  .add-item-button {
+    width: 100%; /* Make the button full width on mobile */
+    font-size: 0.85rem; /* Adjust font size */
+    padding: 10px; /* Increase padding for better touch targets */
+    margin-top: 10px; /* Add some space above the button */
+  }
 }
-.top-image {
-    margin-top: -480px;
-    margin-left: -280px; 
-    /* Adjust the value to position the image higher */
-  }
-
-.left-image {
-    margin-left: -420px;
-    margin-top:-205px ; /* Adjust the value to position the image higher */
-  }
-
-.right-image{
-    margin-bottom: -190px;
-    margin-right: -420px; /* Adjust the value to position the image higher */
-}
-
-.circular-background {
-    width: 300px; /* Adjust the size as per your requirement */
-    height: 300px;
-    border-radius: 50%;
-    background-color:#bbabab;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .guy-image {
-    width: 300px; /* Adjust the size as per your requirement */
-    height: 300px;
-    margin-right: 30px;
-    margin-top: 12px;
-    object-fit: contain;
-    position: absolute; /* Position the image within the circular background */
-  }
-  .girl-image {
-    width: 550px; /* Adjust the size as per your requirement */
-    height: 550px;
-    object-fit: contain;
-    position: absolute; /* Position the image within the circular background */
-  }
-  .kids-image {
-    width: 450px; /* Adjust the size as per your requirement */
-    height: 450px;
-     margin-top: 110px;
-    margin-right: 30px;
-    object-fit:contain;
-    position: absolute; /* Position the image within the circular background */
-  }
