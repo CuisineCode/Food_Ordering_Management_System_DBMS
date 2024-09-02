@@ -3,6 +3,7 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  margin-top: 100px;
 }
 
 .food-box {
@@ -68,8 +69,7 @@
     width: 50%; /* Adjust the width for mobile */
     height: auto; /* Allow height to be dynamic */
     padding: 10px; /* Reduce padding for mobile */
-    margin-left: auto;
-    margin-right: 120px; /* Adjust margin for mobile */
+    margin : 20px auto; /* Adjust margin for mobile */
     flex-direction: column; 
     justify-content: center;
     align-items: center;/* Stack the content vertically */
