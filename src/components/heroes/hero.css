@@ -66,7 +66,7 @@
   }
 
   .food-box {
-    width: 50%; /* Adjust the width for mobile */
+    width: 75%; /* Adjust the width for mobile */
     height: auto; /* Allow height to be dynamic */
     padding: 10px; /* Reduce padding for mobile */
     margin : 20px auto; /* Adjust margin for mobile */

@@ -3,7 +3,7 @@ import './Navbar.css';
 import logo from '../assets/l3.png';
 import cartIcon from '../assets/cart_icon.png';
 import { Link } from 'react-router-dom';
-import LoginPage from '../LoginPage/LoginPage';
+import LoginPage from '../LoginPage/LoginPage'; 
 import Register from '../Register/Register';
 import { ShopContext } from '../../context/ShopContext';
 import { FaUser, FaBars, FaTimes } from 'react-icons/fa'; // Import icons
@@ -19,17 +19,9 @@ const Navbar = () => {
 
   const openLoginPage = () => {
     setIsLoginPageOpen(true);
-    setIsRegisterOpen(false);
   };
 
   const closeOverlay = () => {
-    setIsLoginPageOpen(false);
-    setIsRegisterOpen(false);
-    setShowLogoutOverlay(false);
-  };
-
-  const openRegister = () => {
-    setIsRegisterOpen(true);
     setIsLoginPageOpen(false);
   };
 
@@ -40,8 +32,11 @@ const Navbar = () => {
 
   const handleLogout = () => {
     setIsLoggedIn(false);
-    setShowLogoutOverlay(false);
   };
+
+  useEffect(() => {
+    // Set logged in state if user is authenticated
+  }, [isLoggedIn]);
 
   const handleProfileClick = useCallback(() => {
     setShowLogoutOverlay(true);
@@ -80,65 +75,55 @@ const Navbar = () => {
       <ul className={`nav-menu ${isMobileMenuOpen ? 'active' : ''}`}>
         <li onClick={() => handleMenuClick("shop")} className={activeMenu === "shop" ? "active" : ""}>
           <Link style={{ textDecoration: 'none' }} to='/'>Bestseller</Link>
-          {activeMenu === "shop" ? <hr /> : <></>}
+          {activeMenu === "shop" ? <hr /> : null}
         </li>
-        <li onClick={() => handleMenuClick("men")} className={activeMenu === "shop" ? "active" : ""}>
+        <li onClick={() => handleMenuClick("men")} className={activeMenu === "men" ? "active" : ""}>
           <Link style={{ textDecoration: 'none' }} to='/mens'>Drinks</Link>
-          {activeMenu === "men" ? <hr /> : <></>}
+          {activeMenu === "men" ? <hr /> : null}
         </li>
-        <li onClick={() => handleMenuClick("women")}>
+        <li onClick={() => handleMenuClick("women")} className={activeMenu === "women" ? "active" : ""}>
           <Link style={{ textDecoration: 'none' }} to='/womens'>Food</Link>
-          {activeMenu === "women" ? <hr /> : <></>}
+          {activeMenu === "women" ? <hr /> : null}
         </li>
-        <li onClick={() => handleMenuClick("merchandise")}>
+        <li onClick={() => handleMenuClick("merchandise")} className={activeMenu === "merchandise" ? "active" : ""}>
           <Link style={{ textDecoration: 'none' }} to='/kids'>Merchandise</Link>
-          {activeMenu === "merchandise" ? <hr /> : <></>}
+          {activeMenu === "merchandise" ? <hr /> : null}
         </li>
-        <li onClick={() => handleMenuClick("coffeeHome")}>
+        <li onClick={() => handleMenuClick("coffeeHome")} className={activeMenu === "coffeeHome" ? "active" : ""}>
           <Link style={{ textDecoration: 'none' }} to='/kids'>Coffee at Home</Link>
-          {activeMenu === "coffeeHome" ? <hr /> : <></>}
+          {activeMenu === "coffeeHome" ? <hr /> : null}
         </li>
-        <li onClick={() => handleMenuClick("readyToEat")}>
+        <li onClick={() => handleMenuClick("readyToEat")} className={activeMenu === "readyToEat" ? "active" : ""}>
           <Link style={{ textDecoration: 'none' }} to='/kids'>Ready to Eat</Link>
-          {activeMenu === "readyToEat" ? <hr /> : <></>}
+          {activeMenu === "readyToEat" ? <hr /> : null}
         </li>
       </ul>
       <div className="nav-login-cart">
         {isLoggedIn ? (
-          <div className="profile-wrapper" onClick={handleProfileClick}>
-            <FaUser className="profile-icon" />
+          <div className="profile-wrapper">
+            <FaUser onClick={handleProfileClick} />
             {showLogoutOverlay && (
-              <div className="logout-overlay" onClick={handleOverlayClick}>
-                <p>Do you want to log out?</p>
-                <div className="button-container">
+              <div className="logout-overlay" onClick={handleCancel}>
+                <div className="logout-content" onClick={e => e.stopPropagation()}>
                   <button onClick={handleLogout}>Logout</button>
-                  <button onClick={handleCancel}>Cancel</button>
                 </div>
               </div>
             )}
           </div>
         ) : (
-          <button onClick={openLoginPage}>Login</button>
+          <button onClick={openLoginPage}>Login</button>  // Clicking this will trigger Google Sign-In
         )}
-        <Link to='/cart'><img src={cartIcon} alt="" /></Link>
-        <div className="nav-cart-count">{getTotalCartItems()}</div>
+        <Link to='/cart'>
+          <img src={cartIcon} alt="Cart" />
+          <div className="nav-cart-count">{getTotalCartItems()}</div>
+        </Link>
       </div>
       {isLoginPageOpen && (
-        <LoginPage
-          onClose={closeOverlay}
-          openRegister={openRegister}
-          setIsLoggedIn={setIsLoggedIn}
-        />
-      )}
-      {isRegisterOpen && (
-        <Register
-          onClose={closeOverlay}
-          handleToggleLogin={handleToggleLogin}
-          setIsLoggedIn={setIsLoggedIn}
-        />
+        <LoginPage onClose={closeOverlay} setIsLoggedIn={setIsLoggedIn} />
       )}
     </div>
   );
 };
+      
 
 export default Navbar;
