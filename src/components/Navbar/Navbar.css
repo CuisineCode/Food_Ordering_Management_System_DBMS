@@ -1,264 +1,282 @@
 .navbar {
-background-color:#f8f9fa;
- position: absolute;
- top: 0;
- left: 0;
- right: 0;
- width: 100%; /* You can adjust this percentage */
- max-width: 1328px; /* Add a max-width to limit the width */
- margin: 0 auto; /* Center the navbar horizontally within the viewport */
- display: flex;
- justify-content: space-between;
- align-items: center;
- padding: 8px 20px;
-    
-}
-
-.nav-logo {
-    display: flex;
-    align-items: center;
-    size: 2px;
-    gap: 10px;
-}
-
-.nav-logo p {
-    color: #2c2a2a;
-    font-size: 20px;
-    font-weight: 650;
-}
-
-.nav-menu {
-    display: flex;
-    align-items: center;
-    list-style: none;
-    gap: 30px;
-    color: #252121;
-    font-size: 16px;
-    font-weight: 600;
-}
-
-.nav-logo li {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 3px;
-    
-    cursor: pointer;
-}
-
-.nav-menu hr {
-    border: none;
-    width: 80%;
-    height: 3px;
-    border-radius: 10px;
-    background: #ff4141;
-}
-
-.nav-login-cart {
-    display: flex;
-    align-items: center;
-    gap: 45px;
-}
-
-.nav-login-cart button {
-    width: 100px;
-    height: 50px;
-    border-radius: 40px;
-    font-size: 20px;
-    font-weight: 700;
-    padding-left: auto;
-    background: #bbabab;
-    cursor: pointer;
-}
-
-.nav-login-cart button:active {
-    background: #f3f3f3;
-}
-
-.nav-cart-count {
-    width: 22px;
-    height: 22px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: -35px;
-    margin-left: -55px;
-    border-radius: 11px;
-    font-size: 14px;
-    background: red;
-    color: white;
-}
-
-.profile-icon {
-    font-size: 2rem;
-    color: #333;
-    cursor: pointer;
-    top: 40px;
-    right: 80px;
-    /* Adjust this value to fit your design */
-    transform: translateY(-50%);
-    margin-top: 25px;
-    margin-right: 1px;
-}
-
-.logout-overlay {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: absolute;
-    top: 100%;
+    top: 0;
+    left: 0;
     right: 0;
-    background-color: #fff;
-    border: 1px solid #ccc;
-
-    padding: 20px;
-    z-index: 2;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    border-radius: 5px;
-    width: 350px;
-    display: flex;
-    /* Added display: flex */
-    flex-direction: column;
-    /* Added flex-direction: column */
-    align-items: flex-start;
-    /* Added align-items: flex-start */
-}
-
-.logout-overlay p {
-    margin: 0 0 20px;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.logout-overlay .button-container {
-    display: flex;
-    /* Added display: flex */
-}
-
-.logout-overlay button {
-    padding: 10px 15px;
-    margin-right: 10px;
-    background-color: #bbabab;
-    border: none;
-    color: #333;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.logout-overlay button:hover {
-    background-color: #cfbcbc;
-}
-
-.profile-wrapper {
-    position: relative;
-    z-index: 1;
-    margin-top: 10px;
-}
-
-.hamburger {
-    display: none; /* Initially hidden */
-    font-size: 30px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    z-index: 1001;
-   margin-left: auto;
-}
-
-.hamburger span {
-    display: block;
     width: 100%;
-    height: 4px;
-    background-color: #333; /* Ensure visible color */
-    border-radius: 2px;
-}
-
-
-@media (max-width: 768px) {
-    .nav-logo {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        flex: 1;
-    }
-    .nav-logo img {
-        height: 30px;
-        margin-right: 10px; /* Adjust as needed for your logo size */
-    }
-    .nav-logo p{
-        font-size: 18px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .nav-menu {
-        display: none;
+    max-width: none; /* Remove max-width to allow full extension */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 20px;
+  }
+  
+  .nav-logo {
+      display: flex;
+      align-items: center;
+      size: 2px;
+      gap: 10px;
+  }
+  
+  .nav-logo p {
+      color: #2c2a2a;
+      font-size: 20px;
+      font-weight: 650;
+  }
+  
+  .nav-menu {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 30px;
+      color: #252121;
+      font-size: 16px;
+      font-weight: 600;
+  }
+  
+  .nav-logo li {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      
+      cursor: pointer;
+  }
+  
+  .nav-menu hr {
+      border: none;
+      width: 80%;
+      height: 3px;
+      border-radius: 10px;
+      background: #ff4141;
+  }
+  
+  .nav-login-cart {
+      display: flex;
+      align-items: center;
+      gap: 45px;
+  }
+  
+  .nav-login-cart button {
+      width: 100px;
+      height: 50px;
+      border-radius: 40px;
+      font-size: 20px;
+      font-weight: 700;
+      padding-left: auto;
+      background: #bbabab;
+      cursor: pointer;
+  }
+  
+  .nav-login-cart button:active {
+      background: #f3f3f3;
+  }
+  
+  .nav-cart-count {
+      width: 22px;
+      height: 22px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: -35px;
+      margin-left: -55px;
+      border-radius: 11px;
+      font-size: 14px;
+      background: red;
+      color: white;
+  }
+  
+  .profile-icon {
+      font-size: 2rem;
+      color: #333;
+      cursor: pointer;
+      top: 40px;
+      right: 80px;
+      /* Adjust this value to fit your design */
+      transform: translateY(-50%);
+      margin-top: 25px;
+      margin-right: 1px;
+  }
+  
+  .logout-overlay {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: #fff;
+      border: 1px solid #ccc;
+  
+      padding: 20px;
+      z-index: 2;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      border-radius: 5px;
+      width: 350px;
+      display: flex;
+      /* Added display: flex */
+      flex-direction: column;
+      /* Added flex-direction: column */
+      align-items: flex-start;
+      /* Added align-items: flex-start */
+  }
+  
+  .logout-overlay p {
+      margin: 0 0 20px;
+      font-size: 16px;
+      font-weight: bold;
+  }
+  
+  .logout-overlay .button-container {
+      display: flex;
+      /* Added display: flex */
+  }
+  
+  .logout-overlay button {
+      padding: 10px 15px;
+      margin-right: 10px;
+      background-color: #bbabab;
+      border: none;
+      color: #333;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  }
+  
+  .logout-overlay button:hover {
+      background-color: #cfbcbc;
+  }
+  
+  .profile-wrapper {
+      position: relative;
+      z-index: 1;
+      margin-top: 10px;
+  }
+  
+  .hamburger {
+      display: none; /* Initially hidden */
+      font-size: 30px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      z-index: 1001;
+     margin-left: auto;
+  }
+  
+  .hamburger span {
+      display: block;
+      width: 100%;
+      height: 4px;
+      background-color: #333; /* Ensure visible color */
+      border-radius: 2px;
+  }
+  
+  
+  @media (max-width: 768px) {
+      .nav-logo {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          flex: 1;
+      }
+      .nav-logo img {
+          height: 30px;
+          margin-right: 10px; /* Adjust as needed for your logo size */
+      }
+      .nav-logo p{
+          font-size: 18px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+      }
+  
+      .nav-menu {
+          flex-direction: column;
+          padding: 20px;
+          background-color: grey;
+          display: none; 
+          
+      }
+  
+      .nav-menu.active {
+          display: flex;
+          position: absolute;
+          display: flex;
+          top: 100%;
+          left: 35px;
+          right: 35px;
+          flex-direction: column;
+          background-color: grey;
+          padding: 20px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+  
+      .nav-menu li {
+          margin: 15px 0;
+      }
+      .nav-menu {
+          display: flex;
+          overflow-x: auto;
+          white-space: nowrap;
+          scroll-behavior: smooth;
+        }
         
-    }
-
-    .nav-menu.active {
-        display: flex;
-        position: absolute;
-        top: 100%;
-        left: 35px;
-        right: 35px;
-        flex-direction: column;
-        background-color: grey;
-        padding: 20px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .nav-menu li {
-        margin: 15px 0;
-    }
-
-    .nav-menu li a {
-        color: white;
-        font-size: 24px;
-    }
-    
-    .nav-menu li:hover {
-        color: #ff4141; /* Optional: Change color on hover */
-    }
-    .nav-login-cart {
-        display: none;
-    }
-
-    .hamburger {
-        display: flex;
-        align-self: center;
-        font-size: 24px;
-        margin-left: 15px;
-    }
-
-    .navbar {
-        display: flex;
-        justify-content: space-between;
-        padding: 10px 15px;
-        align-items: center;
-    }
-}
-
-@media (min-width: 769px) {
-    .hamburger {
-        display: none;
-        font-size: 30px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: #333;
-    z-index: 1001;
-    margin-right: auto; /* Push the hamburger towards the left */
-    margin-left: 20px;
-    }
-
-    .mobile-nav {
-        display: none;
-    }
-    .nav-logo {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-}
+        .nav-menu::-webkit-scrollbar {
+          display: none; /* Hide scrollbar */
+        }
+        
+      .nav-menu li a {
+          color: white;
+          font-size: 20px;
+      }
+      
+      .nav-menu li:hover {
+          color: #ff4141; /* Optional: Change color on hover */
+      }
+      .nav-login-cart {
+          display: none;
+      }
+  
+      .hamburger {
+          display: flex;
+          align-self: center;
+          font-size: 24px;
+          margin-left: 15px;
+      }
+  
+      .navbar {
+          display: flex;
+          justify-content: space-between;
+          padding: 10px 15px;
+          align-items: center;
+      }
+  }
+  
+  @media (min-width: 769px) {
+      .hamburger {
+          display: none;
+          font-size: 30px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: #333;
+      z-index: 1001;
+      margin-right: auto; /* Push the hamburger towards the left */
+      margin-left: 20px;
+      }
+      .nav-menu {
+          flex-direction: row;
+          gap: 30px;
+        }
+      .mobile-nav {
+          display: none;
+      }
+      .nav-logo {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+      }
+  }
+  
