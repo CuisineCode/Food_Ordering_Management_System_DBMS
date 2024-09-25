@@ -13,6 +13,8 @@
      padding: 8px 20px;
         
     }
+
+    
     
     .nav-logo {
         display: flex;
@@ -154,7 +156,121 @@
     .logout-overlay button:hover {
         background-color: #cfbcbc;
     }
-    
+
+    /* Navbar.css */
+
+.login-options-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensure it stays above other elements */
+  }
+  
+  .login-options-content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    text-align: center;
+  }
+  
+  .login-options-content button {
+    background-color: #007bff; /* Primary button color */
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    margin: 0.5rem 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+  }
+  
+  .login-options-content button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+    box-shadow: 0 4px 12px rgba(0, 91, 187, 0.3);
+  }
+  
+  .login-options-content button:focus {
+    outline: none;
+  }
+  
+  .login-options-content button:nth-child(2) {
+    background-color: #28a745; /* Secondary button color */
+  }
+  
+  .login-options-content button:nth-child(2):hover {
+    background-color: #218838; /* Darker shade on hover */
+    box-shadow: 0 4px 12px rgba(33, 136, 56, 0.3);
+  }
+
+  /* Navbar.css */
+
+/* Admin Password Overlay Styling */
+.admin-password-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensure it stays above other elements */
+  }
+  
+  .admin-password-content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 400px; /* Set a fixed width */
+    max-width: 90%; /* Responsive width */
+    text-align: center;
+  }
+  
+  .admin-password-content h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+  }
+  
+  .password-input {
+    width: 80%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .admin-password-content button {
+    background-color: #28a745; /* Button color */
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    margin: 0.5rem 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    width: 60%;
+  }
+  
+  .admin-password-content button:hover {
+    background-color: #218838; /* Darker shade on hover */
+    box-shadow: 0 4px 12px rgba(33, 136, 56, 0.3);
+  }
+      
     .profile-wrapper {
         position: relative;
         z-index: 1;
@@ -178,6 +294,7 @@
         background-color: #333; /* Ensure visible color */
         border-radius: 2px;
     }
+
     
     
     @media (max-width: 768px) {

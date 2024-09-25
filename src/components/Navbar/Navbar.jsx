@@ -16,18 +16,19 @@ const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showLogoutOverlay, setShowLogoutOverlay] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Mobile menu state
+  const [showLoginOptions, setShowLoginOptions] = useState(false); // For displaying login options
+  const [isLoginTriggered, setIsLoginTriggered] = useState(false); // To handle actual login trigger
+  const [showAdminPasswordInput, setShowAdminPasswordInput] = useState(false); // For admin password input
+  const [adminPassword, setAdminPassword] = useState(''); // For storing admin password
 
   const openLoginPage = () => {
-    setIsLoginPageOpen(true);
+    setShowLoginOptions(true); // Display login options overlay
   };
 
   const closeOverlay = () => {
     setIsLoginPageOpen(false);
-  };
-
-  const handleToggleLogin = () => {
-    setIsRegisterOpen(false);
-    setIsLoginPageOpen(true);
+    setShowAdminPasswordInput(false);
+    setShowLoginOptions(false);
   };
 
   const handleLogout = () => {
@@ -63,10 +64,43 @@ const Navbar = () => {
     setIsMobileMenuOpen(false); // Close mobile menu when an item is clicked
   };
 
+  const handleLoginOptionClick = (loginType) => {
+    setShowLoginOptions(false); // Close the login options overlay
+    if (loginType === 'admin') {
+      // Show admin password input
+      setShowAdminPasswordInput(true);
+    } else if (loginType === 'user') {
+      // Trigger user login
+      setIsLoginTriggered(true); // Set login trigger
+      setIsLoginPageOpen(true); // Open the user login page or handle Google sign-in
+    }
+  };
+
+  // Handle login process after the user has selected login as user
+  useEffect(() => {
+    if (isLoginTriggered) {
+      // Call Google login or your custom login method here
+      // Example: handleGoogleLogin();
+      console.log('User login triggered');
+    }
+  }, [isLoginTriggered]);
+
+  const handleAdminPasswordSubmit = () => {
+    // Replace with actual admin password validation logic
+    const correctPassword = 'admin123'; // Example password, replace with secure validation
+    if (adminPassword === correctPassword) {
+      console.log('Admin login successful');
+      setIsLoggedIn(true); // Set logged in state
+      setShowAdminPasswordInput(false); // Close admin password input
+    } else {
+      alert('Incorrect password. Please try again.');
+    }
+  };
+
   return (
     <div className='navbar'>
       <div className="nav-logo">
-        <img src={logo} alt="" />
+        <img src={logo} alt="Cuisine Code Logo" />
         <p>Cuisine Code</p>
       </div>
       <div className="hamburger" onClick={toggleMobileMenu}>
@@ -111,19 +145,46 @@ const Navbar = () => {
             )}
           </div>
         ) : (
-          <button onClick={openLoginPage}>Login</button>  // Clicking this will trigger Google Sign-In
+          <button onClick={openLoginPage}>Login</button>  
         )}
         <Link to='/cart'>
           <img src={cartIcon} alt="Cart" />
           <div className="nav-cart-count">{getTotalCartItems()}</div>
         </Link>
       </div>
+
+      {showLoginOptions && (
+        <div className="login-options-overlay" onClick={() => setShowLoginOptions(false)}>
+          <div className="login-options-content" onClick={handleOverlayClick}>
+          <FaTimes className="close-icon" onClick={closeOverlay} style={{ cursor: 'pointer', position: 'absolute', top: '275px', right: '620px' }} />
+            <button onClick={() => handleLoginOptionClick('admin')}>Login as Admin</button>
+            <button onClick={() => handleLoginOptionClick('user')}>Login as User</button>
+          </div>
+        </div>
+      )}
+
+      {showAdminPasswordInput && (
+        <div className="admin-password-overlay" onClick={closeOverlay}>
+          <div className="admin-password-content" onClick={handleOverlayClick}>
+          <FaTimes className="close-icon1" onClick={closeOverlay} style={{ cursor: 'pointer', position: 'absolute', top: '250px', right: '570px' }} />
+            <h3>Please enter admin password</h3>
+            <input 
+              type="password"
+              value={adminPassword}
+              onChange={(e) => setAdminPassword(e.target.value)}
+              placeholder="Admin Password"
+              className="password-input"
+            />
+            <button onClick={handleAdminPasswordSubmit}>Submit</button>
+          </div>
+        </div>
+      )}
+
       {isLoginPageOpen && (
         <LoginPage onClose={closeOverlay} setIsLoggedIn={setIsLoggedIn} />
       )}
     </div>
   );
 };
-      
 
 export default Navbar;
